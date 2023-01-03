@@ -1,0 +1,7 @@
+# -*- mode:  -*-
+# name: property
+# key: prop
+# --
+:PROPERTIES:
+:CATEGORY: ${1:Undefined}
+:END:

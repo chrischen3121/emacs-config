@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: func_declaration
+# key: funcd
+# --
+${1:type} ${2:name}(${3:args})${4: const} {
+  $0;
+}

@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: bang
+# key: s!
+# --
+#!/usr/bin/env bash
+set -euxo pipefail
+IFS=$'\n\t'
+$0

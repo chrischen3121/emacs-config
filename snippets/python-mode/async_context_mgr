@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: async context manager
+# key: acontext
+# group: definitions
+# --
+class ${1:AsyncContextManager}:
+    def __init__(self${2:, args}):
+        pass
+
+    async def __aenter__(self):
+        pass
+
+    async def __aexit__(self, exc_type, exc, tb):
+        pass

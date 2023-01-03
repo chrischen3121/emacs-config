@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: d_operator=
+# key: d=
+# group: operator overloading
+# --
+${1:Name}& operator=(const $1 &)=delete;

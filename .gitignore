@@ -6,6 +6,17 @@
 
 # Backup files
 *~
+.el~
 
 # Undo-tree save-files
 *.~undo-tree
+
+# dirs
+eln-cache/
+elpa/
+
+# special files
+history
+places
+recentf
+mycustom.el

@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: preamble
+# key: !
+# --
+#+TITLE: ${1:Title}
+#+AUTHOR: ${2:`username`}
+#+EMAIL: ${3:`user-mail-address`}
+#+OPTIONS: H:${5:2} toc:${6:2} num:${7:2} ^:nil
+
+$0

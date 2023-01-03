@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: move constructor
+# key: mc
+# --
+${1:Name}($1 &&other) {
+  $0
+}

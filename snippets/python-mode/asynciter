@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: async iterator
+# key: aiter
+# group: definitions
+# --
+class ${1:AsyncIterator}:
+    def __init__(self${2:, args}):
+        pass
+
+    def __aiter__(self):
+        return self
+
+    async def __next__(self):
+        ${3:raise StopAsyncIteration}

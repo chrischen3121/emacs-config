@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: snippet header
+# contributor: Chris Chen
+# key: !
+# --
+# -*- mode: $1 -*-
+# name: $2
+# key: ${5:trigger-key}
+# --
+$0

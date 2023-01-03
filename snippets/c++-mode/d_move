@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: delete move constructor
+# key: dmc
+# --
+${1:Name}($1 &&)=delete;

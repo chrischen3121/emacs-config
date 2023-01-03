@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: iterator
+# key: iter
+# group: definitions
+# --
+class ${1:Iterator}:
+    def __init__(self${2:, args}):
+        pass
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        ${3:raise StopIteration}

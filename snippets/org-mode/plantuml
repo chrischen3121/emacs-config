@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: plantuml
+# key: <uml
+# --
+#+begin_src plantuml :file ${1:../resources/plantuml/${2:filename}.png} :exports results :resultsb silent
+$0
+#+end_src

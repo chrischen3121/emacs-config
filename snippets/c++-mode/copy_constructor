@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: copy constructor
+# key: cc
+# --
+${1:Name}(const $1 &other) {
+  $0
+}

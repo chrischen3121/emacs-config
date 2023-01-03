@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: inline_function
+# key: funci
+# --
+inline ${1:type} ${3:name}(${4:args})${5: const} {
+  $0
+}

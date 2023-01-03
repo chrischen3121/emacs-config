@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: fixmeline
+# key: fl
+# --
+;; FIXME: $0

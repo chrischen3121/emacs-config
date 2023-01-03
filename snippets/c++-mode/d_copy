@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: delete copy constructor
+# key: dcc
+# --
+${1:Name}(const $1 &)=delete;
