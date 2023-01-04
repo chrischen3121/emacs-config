@@ -29,16 +29,29 @@
 (use-package
   helpful
   :after counsel
+  :commands (helpful-callable helpful-variable helpful-command helpful-key)
+  :custom
+  (counsel-describe-function-function #'helpful-callable)
+  (counsel-describe-variable-function #'helpful-variable)
   :bind (:map counsel-mode-map
-	 ([remap describe-function] . helpful-callable)
-	 ([remap describe-variable] . helpful-variable)
 	 ([remap describe-key] . helpful-key)
 	 ([remap describe-symbol] . helpful-symbol)
+	 ([remap describe-command] . helpful-command)
 	 :map emacs-lisp-mode-map ("C-c d" . helpful-at-point)))
 
 (use-package ivy-rich
   :after (ivy counsel)
   :init
   (ivy-rich-mode 1))
+
+;; Improved Candidate Sorting with prescient.el
+(use-package ivy-prescient
+  :after counsel
+  :custom
+  (ivy-prescient-enable-filtering nil)
+  :config
+  ;; to have sorting remembered across sessions!
+  (prescient-persist-mode 1)
+  (ivy-prescient-mode 1))
 
 (provide 'cc-ivy-counsel)

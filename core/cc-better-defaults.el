@@ -6,6 +6,7 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (tooltip-mode -1)
+(delete-selection-mode 1)
 (set-fringe-mode 10) ; Give some breathing room
 
 (recentf-mode 1)
@@ -68,7 +69,8 @@
 	(t . (semilight 1.1))))
 (setq modus-themes-scale-headings t)
 (setq modus-themes-org-blocks 'tinted-background)
-(load-theme 'modus-vivendi t) ; modus-theme-toggle
+(load-theme 'modus-operandi t) ; M-x modus-theme-toggle
+(global-set-key (kbd "<f1>") 'modus-themes-toggle)
 
 ;; gruvbox-theme
 ;; (use-package
@@ -87,7 +89,8 @@
   :demand
   :diminish which-key-mode
   :custom (which-key-idle-delay 1)
-  :init (which-key-mode 1))
+  :init (which-key-mode 1)
+  :config (which-key-add-key-based-replacements "C-c m" "mode-commands"))
 
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
@@ -114,5 +117,23 @@
 (use-package doom-modeline
   :init (doom-modeline-mode 1)
   :custom ((doom-modeline-height 15)))
+
+;; Easy shortcut to switch windows
+(use-package
+  ace-window
+  :bind (([remap other-window] . ace-window)
+	 ("C-x w" . ace-swap-window)))
+
+;; highlight TODO
+(use-package
+  hl-todo
+  :init
+  (global-hl-todo-mode 1))
+
+;; It can help you to move your cursor to ANY position in emacs
+;; by using only 3 times key press.
+(use-package
+  ace-jump-mode
+  :bind ("C-x j" . ace-jump-mode))
 
 (provide 'cc-better-defaults)
