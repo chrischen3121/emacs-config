@@ -1,3 +1,27 @@
+;;; cc-better-defaults.el --- Better Default
+
+;; Author: chrischen
+;; Maintainer: chrischen
+
+;; This file is not part of GNU Emacs
+
+;; This file is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation; either version 3, or (at your option)
+;; any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; For a full copy of the GNU General Public License
+;; see <http://www.gnu.org/licenses/>.
+
+;;; Commentary:
+;;
+
+;;; Code:
 (setq inhibit-startup-message t ; Don't show the splash screen
       visible-bell t ; Flash when the bell rings
       make-backup-files nil
@@ -130,6 +154,12 @@
   :init
   (global-hl-todo-mode 1))
 
+;; Better C-w action
+(use-package
+  whole-line-or-region
+  :diminish whole-line-or-region-local-mode
+  :init (whole-line-or-region-global-mode 1))
+
 ;; It can help you to move your cursor to ANY position in emacs
 ;; by using only 3 times key press.
 (use-package
@@ -137,3 +167,4 @@
   :bind ("C-x j" . ace-jump-mode))
 
 (provide 'cc-better-defaults)
+;;; cc-better-defaults.el ends here
