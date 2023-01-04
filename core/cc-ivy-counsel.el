@@ -7,13 +7,10 @@
 	 :map ivy-minibuffer-map
 	 ("TAB" . ivy-alt-done)
 	 ("C-l" . ivy-backward-delete-char)
-	 ("C-j" . ivy-next-line)
-	 ("C-k" . ivy-previous-line)
+	 ("C-j" . ivy-immediate-done)
 	 :map ivy-switch-buffer-map
-	 ("C-k" . ivy-previous-line)
 	 ("C-d" . ivy-switch-buffer-kill)
 	 :map ivy-reverse-i-search-map
-	 ("C-k" . ivy-previous-line)
 	 ("C-d" . ivy-reverse-i-search-kill))
   :init
   (ivy-mode 1))

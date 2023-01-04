@@ -58,7 +58,7 @@
   :diminish yas-minor-mode
   :config
   (which-key-add-keymap-based-replacements yas-minor-mode-map "C-c y" "yasnippet")
-  ;; (yas-reload-all)
+  (yas-reload-all)
   :hook ((prog-mode . yas-minor-mode-on)
 	 (org-mode . yas-minor-mode-on))
   :bind (:map yas-minor-mode-map
