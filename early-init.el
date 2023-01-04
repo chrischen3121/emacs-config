@@ -24,36 +24,43 @@
 ;;; Code:
 
 ;; Prevent any garbage collection from happening during load time.
-(defconst 1MB 1048576)
-(defconst 20MB 20971520)
-(defconst 30MB 31457280)
-(defconst 50MB 52428800)
+(defconst cc/1mb (* 1024 1024))
+(defconst cc/30mb (* 30 cc/1mb))
+(defconst cc/50mb (* 50 cc/1mb))
 
 (defun cc/defer-garbage-collection ()
   (setq gc-cons-threshold most-positive-fixnum))
 
 (defun cc/restore-garbage-collection ()
   (run-at-time 1 nil (lambda ()
-                       (setq gc-cons-threshold 30MB))))
+                       (setq gc-cons-threshold cc/30mb))))
+
+
+(defun cc/display-startup-time ()
+  (message "Emacs loaded in %s with %d garbage collections."
+           (format "%.2f seconds"
+                   (float-time
+                    (time-subtract after-init-time before-init-time)))
+           gcs-done))
 
 (add-hook 'emacs-startup-hook #'cc/restore-garbage-collection)
+(add-hook 'emacs-startup-hook #'cc/display-startup-time)
 (add-hook 'minibuffer-setup-hook #'cc/defer-garbage-collection)
 (add-hook 'minibuffer-exit-hook #'cc/restore-garbage-collection)
 
+;; Garbage collection is a big contributor to startup times.
+(cc/defer-garbage-collection)
+
 ;; lsp-mode's performance suggest
-(setq read-process-output-max 1MB)
+(setq read-process-output-max cc/1mb)
 
 ;; Resizing the Emacs frame can be a terribly expensive part of changing the
 ;; font. By inhibiting this, we easily halve startup times with fonts that are
 ;; larger than the system default.
 (setq frame-inhibit-implied-resize t)
 
-;; Garbage collection is a big contributor to startup times.
-(cc/defer-garbage-collection)
-
 ;; Don't use precious startup time checking mtime on elisp bytecode.
 (setq load-prefer-newer noninteractive)
-
 
 (when (getenv-internal "DEBUG")
   (setq init-file-debug t debug-on-error t))
