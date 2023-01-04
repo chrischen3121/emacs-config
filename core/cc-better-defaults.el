@@ -81,18 +81,6 @@
 (set-frame-parameter (selected-frame) 'fullscreen 'maximized)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
-;; helpful package
-(use-package
-  helpful
-  ;; :custom
-  ;; (helm-describe-function-function 'helpful-function)
-  ;; (helm-describe-variable-function 'helpful-variable)
-  :bind (([remap describe-function] . helpful-callable)
-	 ([remap describe-variable] . helpful-variable)
-	 ([remap describe-key] . helpful-key)
-	 ([remap describe-symbol] . helpful-symbol)
-	 :map emacs-lisp-mode-map ("C-c d" . helpful-at-point)))
-
 ;; which-key
 (use-package
   which-key

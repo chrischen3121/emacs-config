@@ -18,11 +18,23 @@
   :init
   (ivy-mode 1))
 
+;; counsel
 (use-package
   counsel
   :bind (:map minibuffer-local-map
-	      ("C-r" . 'counsel-minibuffer-history))
+	 ("C-r" . 'counsel-minibuffer-history))
   :init (counsel-mode 1))
+
+;; helpful
+(use-package
+  helpful
+  :after counsel
+  :bind (:map counsel-mode-map
+	 ([remap describe-function] . helpful-callable)
+	 ([remap describe-variable] . helpful-variable)
+	 ([remap describe-key] . helpful-key)
+	 ([remap describe-symbol] . helpful-symbol)
+	 :map emacs-lisp-mode-map ("C-c d" . helpful-at-point)))
 
 (use-package ivy-rich
   :after (ivy counsel)
