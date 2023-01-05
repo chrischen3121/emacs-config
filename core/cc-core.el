@@ -31,6 +31,7 @@
 (use-package no-littering)
 
 (require 'cc-locale)
+(require 'cc-themes)
 (require 'cc-better-defaults)
 (require 'cc-ivy-counsel)
 (require 'cc-dev)

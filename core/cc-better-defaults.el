@@ -69,47 +69,6 @@
 ;; Remember and restore the last cursor location of opened files
 (save-place-mode 1)
 
-;; (add-hook 'prog-mode-hook #'display-line-numbers-mode)
-
-;; ;; modus theme
-;; (setq modus-themes-mode-line '(borderless))
-;; (setq modus-themes-region '(bg-only))
-;; ;; (setq modus-themes-completions 'minimal)
-;; (setq modus-themes-paren-match '(bold intense))
-;; (setq modus-themes-bold-constructs t)
-;; (setq modus-themes-italic-constructs t)
-;; (setq modus-themes-syntax '(faint alt-syntax yellow-comments))
-
-;; (setq modus-themes-headings
-;;       '((1 . (rainbow overline background 1.4))
-;;	(2 . (rainbow background 1.3))
-;;	(3 . (rainbow bold 1.2))
-;;	(t . (semilight 1.1))))
-;; (setq modus-themes-scale-headings t)
-;; (setq modus-themes-org-blocks 'tinted-background)
-;; (load-theme 'modus-operandi t) ; M-x modus-theme-toggle
-;; (global-set-key (kbd "<f1>") 'modus-themes-toggle)
-
-;; gruvbox-theme
-(defun cc/switch-themes-toggle ()
-  """Switch light/dark themes"""
-  (interactive)
-  (if (eq (car custom-enabled-themes) 'doom-gruvbox-light)
-      (load-theme 'doom-gruvbox t)
-    (disable-theme 'doom-gruvbox)
-    (load-theme 'doom-gruvbox-light t)))
-
-(use-package doom-themes
-  :custom
-  (doom-themes-enable-bold t)
-  (doom-themes-enable-italic t)
-  :config
-  (load-theme 'doom-gruvbox-light t)
-  (doom-themes-visual-bell-config)
-  (doom-themes-org-config)
-  :bind ("<f1>" . 'cc/switch-themes-toggle))
-
-
 ;; Set frame transparency
 (set-frame-parameter (selected-frame) 'alpha cc/frame-transparency)
 (add-to-list 'default-frame-alist `(alpha . ,cc/frame-transparency))
