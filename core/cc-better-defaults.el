@@ -20,6 +20,7 @@
 
 ;;; Commentary:
 ;;
+;; M-s h --- highlight
 
 ;;; Code:
 (setq inhibit-startup-message t ; Don't show the splash screen
@@ -40,19 +41,11 @@
 (global-hl-line-mode 1)
 
 ;; Line numbers mode
-(global-display-line-numbers-mode t)
-
-;; Disable for some modes
-(dolist (mode-hook '(org-mode-hook
-		     term-mode-hook
-		     shell-mode-hook
-		     treemacs-mode-hook
-		     help-mode-hook
-		     ibuffer-mode-hook
-		     eshell-mode-hook))
- (add-hook mode-hook (lambda () (display-line-numbers-mode -1))))
+(add-hook 'prog-mode-hook #'display-line-numbers-mode)
+(add-hook 'org-mode-hook #'display-line-numbers-mode)
 
 (fset 'yes-or-no-p 'y-or-n-p)
+(global-unset-key (kbd "C-z"))
 
 (defun cc/before-exit-emacs ()
   "Prompt the user to confirm before exiting Emacs."
@@ -114,7 +107,17 @@
   :diminish which-key-mode
   :custom (which-key-idle-delay 1)
   :init (which-key-mode 1)
-  :config (which-key-add-key-based-replacements "C-c m" "mode-commands"))
+  :config
+  (which-key-add-key-based-replacements "C-c m" "mode-commands")
+  (which-key-add-key-based-replacements "C-x 8" "strange-chars")
+  (which-key-add-key-based-replacements "C-x RET" "coding-system")
+  (which-key-add-key-based-replacements "C-x p" "project")
+  (which-key-add-key-based-replacements "C-x t" "tab")
+  (which-key-add-key-based-replacements "C-x n" "narrow")
+  (which-key-add-key-based-replacements "C-x r" "register")
+  (which-key-add-key-based-replacements "C-x a" "abbrev")
+  (which-key-add-key-based-replacements "C-x x" "buffer")
+  (which-key-add-key-based-replacements "M-s h" "highlight"))
 
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
@@ -148,7 +151,6 @@
   :bind (([remap other-window] . ace-window)
 	 ("C-x w" . ace-swap-window)))
 
-;; highlight TODO
 (use-package
   hl-todo
   :init
@@ -165,6 +167,23 @@
 (use-package
   ace-jump-mode
   :bind ("C-x j" . ace-jump-mode))
+
+;; smartparens
+;; use M-x sp-cheat-sheet show all commands
+(use-package
+  smartparens
+  :diminish smartparens-mode
+  :init (require ' smartparens-config)
+  :hook ((org-mode . smartparens-mode)
+	 (prog-mode . smartparens-mode))
+  :bind (:map emacs-lisp-mode-map
+	 ("C-M-f" . sp-forward-sexp)
+	 ("C-M-b" . sp-backward-sexp)))
+
+
+;; TODO try hydra
+;; TODO edebug
+;; TODO eldoc
 
 (provide 'cc-better-defaults)
 ;;; cc-better-defaults.el ends here

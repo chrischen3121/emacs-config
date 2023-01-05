@@ -59,7 +59,8 @@
 	 ([remap describe-key] . helpful-key)
 	 ([remap describe-symbol] . helpful-symbol)
 	 ([remap describe-command] . helpful-command)
-	 :map emacs-lisp-mode-map ("C-c d" . helpful-at-point)))
+	 :map emacs-lisp-mode-map
+	 ("C-c d" . helpful-at-point)))
 
 (use-package ivy-rich
   :after (ivy counsel)
