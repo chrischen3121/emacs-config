@@ -1,0 +1,13 @@
+* Location
+- =~/.config/emacs/=
+- =~/.emacs.d/=
+
+* TODOs
+- [ ] org-mode
+- [ ] C++
+- [ ] Python
+
+* DONEs
+- [X] better default
+- [X] themes, fonts
+- [X] basic dev configuration
