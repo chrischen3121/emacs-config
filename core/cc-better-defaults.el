@@ -34,15 +34,16 @@
 (delete-selection-mode 1)
 (set-fringe-mode 10) ; Give some breathing room
 
+;; recentf-mode
 (recentf-mode 1)
 (global-set-key (kbd "C-c C-f") 'recentf-open-files)
-;; (column-number-mode 1) ; Toggle column number display in the mode line
-
 (global-hl-line-mode 1)
 
 ;; Line numbers mode
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
 (add-hook 'org-mode-hook #'display-line-numbers-mode)
+
+(column-number-mode 1) ; Toggle column number display in the mode line
 
 (fset 'yes-or-no-p 'y-or-n-p)
 (global-unset-key (kbd "C-z"))
@@ -70,29 +71,44 @@
 
 ;; (add-hook 'prog-mode-hook #'display-line-numbers-mode)
 
-;; modus theme
-(setq modus-themes-mode-line '(borderless))
-(setq modus-themes-region '(bg-only))
-;; (setq modus-themes-completions 'minimal)
-(setq modus-themes-paren-match '(bold intense))
-(setq modus-themes-bold-constructs t)
-(setq modus-themes-italic-constructs t)
-(setq modus-themes-syntax '(faint alt-syntax yellow-comments))
+;; ;; modus theme
+;; (setq modus-themes-mode-line '(borderless))
+;; (setq modus-themes-region '(bg-only))
+;; ;; (setq modus-themes-completions 'minimal)
+;; (setq modus-themes-paren-match '(bold intense))
+;; (setq modus-themes-bold-constructs t)
+;; (setq modus-themes-italic-constructs t)
+;; (setq modus-themes-syntax '(faint alt-syntax yellow-comments))
 
-(setq modus-themes-headings
-      '((1 . (rainbow overline background 1.4))
-	(2 . (rainbow background 1.3))
-	(3 . (rainbow bold 1.2))
-	(t . (semilight 1.1))))
-(setq modus-themes-scale-headings t)
-(setq modus-themes-org-blocks 'tinted-background)
-(load-theme 'modus-operandi t) ; M-x modus-theme-toggle
-(global-set-key (kbd "<f1>") 'modus-themes-toggle)
+;; (setq modus-themes-headings
+;;       '((1 . (rainbow overline background 1.4))
+;;	(2 . (rainbow background 1.3))
+;;	(3 . (rainbow bold 1.2))
+;;	(t . (semilight 1.1))))
+;; (setq modus-themes-scale-headings t)
+;; (setq modus-themes-org-blocks 'tinted-background)
+;; (load-theme 'modus-operandi t) ; M-x modus-theme-toggle
+;; (global-set-key (kbd "<f1>") 'modus-themes-toggle)
 
 ;; gruvbox-theme
-;; (use-package
-;;   gruvbox-theme
-;;   :init (load-theme 'gruvbox-light-mediumsoft t))
+(defun cc/switch-themes-toggle ()
+  """Switch light/dark themes"""
+  (interactive)
+  (if (eq (car custom-enabled-themes) 'doom-gruvbox-light)
+      (load-theme 'doom-gruvbox t)
+    (disable-theme 'doom-gruvbox)
+    (load-theme 'doom-gruvbox-light t)))
+
+(use-package doom-themes
+  :custom
+  (doom-themes-enable-bold t)
+  (doom-themes-enable-italic t)
+  :config
+  (load-theme 'doom-gruvbox-light t)
+  (doom-themes-visual-bell-config)
+  (doom-themes-org-config)
+  :bind ("<f1>" . 'cc/switch-themes-toggle))
+
 
 ;; Set frame transparency
 (set-frame-parameter (selected-frame) 'alpha cc/frame-transparency)
@@ -117,6 +133,9 @@
   (which-key-add-key-based-replacements "C-x r" "register")
   (which-key-add-key-based-replacements "C-x a" "abbrev")
   (which-key-add-key-based-replacements "C-x x" "buffer")
+  (which-key-add-key-based-replacements "C-x X" "edebug")
+  (which-key-add-key-based-replacements "C-x C-a" "edebug")
+  (which-key-add-key-based-replacements "C-h 4" "info-other-window")
   (which-key-add-key-based-replacements "M-s h" "highlight"))
 
 ;; Make ESC quit prompts
@@ -180,6 +199,10 @@
 	 ("C-M-f" . sp-forward-sexp)
 	 ("C-M-b" . sp-backward-sexp)))
 
+;; command-log-mode: show keybinding history
+(use-package command-log-mode
+  :config
+  (global-command-log-mode 1))
 
 ;; TODO try hydra
 ;; TODO edebug
