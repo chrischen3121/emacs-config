@@ -23,7 +23,7 @@
 
 ;;; Code:
 
-;; ;; modus theme
+;; ;; modus theme high-contrast
 ;; (setq modus-themes-mode-line '(borderless))
 ;; (setq modus-themes-region '(bg-only))
 ;; ;; (setq modus-themes-completions 'minimal)
@@ -42,13 +42,14 @@
 ;; (load-theme 'modus-operandi t) ; M-x modus-theme-toggle
 ;; (global-set-key (kbd "<f1>") 'modus-themes-toggle)
 
-;; gruvbox-theme
+;; doom-themes low-contrast
 (defun cc/switch-themes-toggle ()
   """Switch light/dark themes"""
   (interactive)
   (if (eq (car custom-enabled-themes) 'doom-gruvbox-light)
-      (load-theme 'doom-gruvbox t)
-    (disable-theme 'doom-gruvbox)
+      (progn (disable-theme 'doom-gruvbox-light)
+	     (load-theme 'doom-palenight t))
+    (disable-theme 'doom-palenight)
     (load-theme 'doom-gruvbox-light t)))
 
 (use-package doom-themes
