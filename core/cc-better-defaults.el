@@ -165,7 +165,6 @@
   :config
   (global-command-log-mode 1))
 
-;; TODO try hydra
 ;; TODO edebug
 ;; TODO eldoc
 
