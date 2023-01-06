@@ -33,8 +33,8 @@
 (require 'cc-locale)
 (require 'cc-themes)
 (require 'cc-better-defaults)
-(require 'cc-hydra)
 (require 'cc-ivy-counsel)
+(require 'cc-hydra)
 (require 'cc-dev)
 
 (provide 'cc-core)

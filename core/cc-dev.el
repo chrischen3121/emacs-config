@@ -19,9 +19,7 @@
 
 ;;; Commentary:
 ;;
-
 ;;; Code:
-
 (use-package
   magit
   :custom (magit-clone-set-remote.pushDefault t)
@@ -60,28 +58,10 @@
 (defun cc/set-text-backends ()
   (setq-local company-backends
 	      '((company-ispell :separate) company-files)))
+
 (defun cc/set-prog-backends ()
   (setq-local company-backends
 	      '((company-capf company-keywords :separate) company-ispell)))
-
-;; hideshow
-
-
-
-
-(use-package
-  hideshow
-  :diminish hs-minor-mode
-  :hook
-  (prog-mode . hs-minor-mode)
-  :config
-  (which-key-add-keymap-based-replacements hs-minor-mode-map "C-c h" '("hideshow" . nil))
-  :bind
-  (:map hs-minor-mode-map
-	("C-c @" . nil)
-	("C-c h <backtab>" . hs-show-all)
-	("C-c h l" . hs-hide-level)
-	("C-c h <tab>" . hs-toggle-hiding)))
 
 ;; Auto Completion
 (use-package
@@ -110,6 +90,21 @@
 	("C-c y r" . yas-reload-all)
 	("C-c y v" . yas-visit-snippet-file)
 	("M-/" . company-yasnippet)))
+
+;; hideshow
+(use-package
+  hideshow
+  :diminish hs-minor-mode
+  :hook
+  (prog-mode . hs-minor-mode)
+  :config
+  (which-key-add-keymap-based-replacements hs-minor-mode-map "C-c h" '("hideshow" . nil))
+  :bind
+  (:map hs-minor-mode-map
+	("C-c @" . nil)
+	("C-c h <backtab>" . hs-show-all)
+	("C-c h l" . hs-hide-level)
+	("C-c h <tab>" . hs-toggle-hiding)))
 
 ;; flyspell & flycheck
 (use-package

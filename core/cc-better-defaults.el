@@ -121,9 +121,9 @@
 	("C-c m w" . whitespace-mode)))
 
 ;; doom-modeline
-(use-package doom-modeline
-  :init (doom-modeline-mode 1)
-  :custom ((doom-modeline-height 15)))
+;; (use-package doom-modeline
+;;   :init (doom-modeline-mode 1)
+;;   :custom ((doom-modeline-height 15)))
 
 ;; Easy shortcut to switch windows
 (use-package
@@ -162,6 +162,7 @@
 
 ;; command-log-mode: show keybinding history
 (use-package command-log-mode
+  :diminish command-log-mode
   :config
   (global-command-log-mode 1))
 
