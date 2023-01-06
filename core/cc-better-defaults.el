@@ -115,8 +115,10 @@
 (use-package
   whitespace
   :hook (before-save . whitespace-cleanup)
-  :bind (:map prog-mode-map
-	 ("C-c m w" . whitespace-mode)))
+
+  :bind
+  (:map prog-mode-map
+	("C-c m w" . whitespace-mode)))
 
 ;; doom-modeline
 (use-package doom-modeline

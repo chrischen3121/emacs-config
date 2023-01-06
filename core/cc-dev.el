@@ -1,5 +1,4 @@
 ;;; cc-dev.el --- Tools for development
-
 ;; Author: chrischen
 ;; Maintainer: chrischen
 
@@ -66,77 +65,78 @@
 	      '((company-capf company-keywords :separate) company-ispell)))
 
 ;; hideshow
+
+
+
+
 (use-package
   hideshow
   :diminish hs-minor-mode
   :hook
   (prog-mode . hs-minor-mode)
+  :config
+  (which-key-add-keymap-based-replacements hs-minor-mode-map "C-c h" '("hideshow" . nil))
   :bind
   (:map hs-minor-mode-map
 	("C-c @" . nil)
 	("C-c h <backtab>" . hs-show-all)
 	("C-c h l" . hs-hide-level)
-	("C-c h <tab>" . hs-toggle-hiding))
-
-  :config
-  (which-key-add-keymap-based-replacements hs-minor-mode-map "C-c h" "hideshow"))
+	("C-c h <tab>" . hs-toggle-hiding)))
 
 ;; Auto Completion
 (use-package
   company
+  :init (global-company-mode 1)
   :diminish company-mode
   :custom
   (company-transformers '(company-sort-by-backend-importance))
   (company-minimum-prefix-length 1)
-  :hook ((after-init . global-company-mode)
-	 (text-mode . cc/set-text-backends)
+  :hook ((text-mode . cc/set-text-backends)
 	 (prog-mode . cc/set-prog-backends)))
 
 (use-package
   yasnippet
   :after company
   :diminish yas-minor-mode
-  :config
-  (which-key-add-keymap-based-replacements yas-minor-mode-map "C-c y" "yasnippet")
-  (yas-reload-all)
   :hook ((prog-mode . yas-minor-mode-on)
 	 (org-mode . yas-minor-mode-on))
-  :bind (:map yas-minor-mode-map
-	      ("C-c &" . nil)
-	      ("C-c y n" . yas-new-snippet)
-	      ("C-c y r" . yas-reload-all)
-	      ("C-c y v" . yas-visit-snippet-file)
-	      ("M-/" . company-yasnippet)))
-
+  :config
+  (yas-reload-all)
+  (which-key-add-keymap-based-replacements yas-minor-mode-map "C-c y" '("yasnippet" . nil))
+  :bind
+  (:map yas-minor-mode-map
+	("C-c &" . nil)
+	("C-c y n" . yas-new-snippet)
+	("C-c y r" . yas-reload-all)
+	("C-c y v" . yas-visit-snippet-file)
+	("M-/" . company-yasnippet)))
 
 ;; flyspell & flycheck
 (use-package
   flycheck
   :diminish flycheck-mode
-  :init (which-key-add-key-based-replacements "C-c !" "flycheck")
+  :config
+  (which-key-add-keymap-based-replacements flycheck-mode-map "C-c !" '("flycheck" . nil))
   :commands flycheck-mode
   :delight
-  :hook ((prog-mode . flycheck-mode)
-	 (text-mode . flycheck-mode))
-  :bind (:map flycheck-mode-map
-	      ("C-c ! ?" . nil)
-	      ("C-c ! h" . nil)
-	      ("C-c ! V" . nil)
-	      ("C-c ! C-w" . nil)
-	      ("C-c ! C" . nil)
-	      ("C-c ! x" . nil)
-	      ("C-c ! e" . nil)
-	      ("C-c ! H" . nil)))
+  :hook prog-mode
+  :bind
+  (:map flycheck-mode-map
+	("C-c ! h" . nil)
+	("C-c ! V" . nil)
+	("C-c ! e" . nil)
+	("C-c ! H" . nil)))
 
 (use-package
   flyspell
   :diminish flyspell-mode
-  :bind (:map flyspell-mode-map
-	      ("C-c $" . nil)
-	      ("C-c ! s" . flyspell-buffer)
-	      ("C-c ! i" . flyspell-correct-word-before-point))
   :hook ((prog-mode . flyspell-prog-mode)
-	 (org-mode . flyspell-mode)))
+	 (text-mode . flyspell-mode))
+  :bind
+  (:map flyspell-mode-map
+	("C-c $" . nil)
+	("C-c ! b" . flyspell-buffer)
+	("C-c ! i" . flyspell-correct-word-before-point)))
 
 ;; "Move Where I Mean"
 (use-package
