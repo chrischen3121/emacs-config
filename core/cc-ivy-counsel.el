@@ -21,6 +21,10 @@
 ;;; Commentary:
 ;;
 
+;;; Hints:
+;; C-c C-o --- Pop up candidates
+;; M-o --- More options
+
 ;;; Code:
 
 (use-package swiper

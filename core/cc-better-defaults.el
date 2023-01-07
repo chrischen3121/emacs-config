@@ -170,6 +170,10 @@
   :config
   (global-command-log-mode 1))
 
+;; ripgrep
+(use-package rg
+  :ensure-system-package (rg . ripgrep))
+
 ;; TODO edebug
 ;; TODO eldoc
 

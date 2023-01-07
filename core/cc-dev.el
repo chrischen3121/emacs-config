@@ -23,10 +23,14 @@
 (use-package
   magit
   :ensure-system-package git
-  :custom (magit-clone-set-remote.pushDefault t)
+  :custom
+  (magit-clone-set-remote.pushDefault t)
+  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
   :config (global-unset-key (kbd "C-c M-g"))
   :bind
   ("C-x g" . magit-status))
+
+;; (use-package forge) ; Github issues & pull requests
 
 (use-package
   projectile
@@ -47,6 +51,12 @@
   (which-key-add-key-based-replacements "C-c p x" "projectile-run")
   (add-to-list 'projectile-globally-ignored-directories "elpa")
   (add-to-list 'projectile-globally-ignored-directories ".mypy_cache"))
+
+;; counsel-projectile e.g. C-c p p, then M-o
+(use-package counsel-projectile
+  :after (counsel projectile)
+  :init (which-key-add-key-based-replacements "C-c p O" "counsel-projectile")
+  :config (counsel-projectile-mode 1))
 
 ;; git: highlight changes
 (use-package
