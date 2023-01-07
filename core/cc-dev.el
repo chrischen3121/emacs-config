@@ -33,6 +33,7 @@
   :custom
   (projectile-completion-system 'ivy)
   (projectile-enable-caching t)
+  (projectile-switch-project-action #'projectile-dired)
   :bind-keymap
   ("C-c p" . projectile-command-map)
   :diminish
@@ -84,7 +85,7 @@
 	 (org-mode . yas-minor-mode-on))
   :config
   (yas-reload-all)
-  (which-key-add-keymap-based-replacements yas-minor-mode-map "C-c y" '("yasnippet" . nil))
+  (which-key-add-keymap-based-replacements yas-minor-mode-map "C-c y" "yasnippet")
   :bind
   (:map yas-minor-mode-map
 	("C-c &" . nil)
@@ -100,7 +101,7 @@
   :hook
   (prog-mode . hs-minor-mode)
   :config
-  (which-key-add-keymap-based-replacements hs-minor-mode-map "C-c h" '("hideshow" . nil))
+  (which-key-add-keymap-based-replacements hs-minor-mode-map "C-c h" "hideshow")
   :bind
   (:map hs-minor-mode-map
 	("C-c @" . nil)
@@ -113,7 +114,7 @@
   flycheck
   :diminish flycheck-mode
   :config
-  (which-key-add-keymap-based-replacements flycheck-mode-map "C-c !" '("flycheck" . nil))
+  (which-key-add-keymap-based-replacements flycheck-mode-map "C-c !" "flycheck")
   :commands flycheck-mode
   :delight
   :hook prog-mode

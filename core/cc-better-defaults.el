@@ -34,9 +34,33 @@
 (delete-selection-mode 1)
 (set-fringe-mode 10) ; Give some breathing room
 
+;; which-key
+(use-package
+  which-key
+  :demand
+  :diminish which-key-mode
+  :custom (which-key-idle-delay 1)
+  :config
+  (which-key-mode 1)
+  (which-key-add-key-based-replacements "C-c m" "mode-commands")
+  (which-key-add-key-based-replacements "C-x 8" "strange-chars")
+  (which-key-add-key-based-replacements "C-x RET" "coding-system")
+  (which-key-add-key-based-replacements "C-x p" "project")
+  (which-key-add-key-based-replacements "C-x t" "tab")
+  (which-key-add-key-based-replacements "C-x n" "narrow")
+  (which-key-add-key-based-replacements "C-x r" "register")
+  (which-key-add-key-based-replacements "C-x a" "abbrev")
+  (which-key-add-key-based-replacements "C-x x" "buffer")
+  (which-key-add-key-based-replacements "C-x X" "edebug")
+  (which-key-add-key-based-replacements "C-x C-a" "edebug")
+  (which-key-add-key-based-replacements "C-h 4" "info-other-window")
+  (which-key-add-key-based-replacements "M-s h" "highlight"))
+
 ;; recentf-mode
 (recentf-mode 1)
-(global-set-key (kbd "C-c C-f") 'recentf-open-files)
+(global-set-key (kbd "C-c r f") 'recentf-open-files)
+(global-set-key (kbd "C-c r c") 'recentf-cleanup)
+(which-key-add-key-based-replacements "C-c r" "recentf")
 (global-hl-line-mode 1)
 
 ;; Line numbers mode
@@ -74,28 +98,6 @@
 (add-to-list 'default-frame-alist `(alpha . ,cc/frame-transparency))
 (set-frame-parameter (selected-frame) 'fullscreen 'maximized)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
-
-;; which-key
-(use-package
-  which-key
-  :demand
-  :diminish which-key-mode
-  :custom (which-key-idle-delay 1)
-  :config
-  (which-key-mode 1)
-  (which-key-add-key-based-replacements "C-c m" "mode-commands")
-  (which-key-add-key-based-replacements "C-x 8" "strange-chars")
-  (which-key-add-key-based-replacements "C-x RET" "coding-system")
-  (which-key-add-key-based-replacements "C-x p" "project")
-  (which-key-add-key-based-replacements "C-x t" "tab")
-  (which-key-add-key-based-replacements "C-x n" "narrow")
-  (which-key-add-key-based-replacements "C-x r" "register")
-  (which-key-add-key-based-replacements "C-x a" "abbrev")
-  (which-key-add-key-based-replacements "C-x x" "buffer")
-  (which-key-add-key-based-replacements "C-x X" "edebug")
-  (which-key-add-key-based-replacements "C-x C-a" "edebug")
-  (which-key-add-key-based-replacements "C-h 4" "info-other-window")
-  (which-key-add-key-based-replacements "M-s h" "highlight"))
 
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
