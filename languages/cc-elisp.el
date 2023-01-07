@@ -1,4 +1,4 @@
-;;; cc-core.el --- Core Configuration
+;;; cc-elisp.el --- emacs lisp configuration
 
 ;; Author: chrischen
 ;; Maintainer: chrischen
@@ -23,21 +23,8 @@
 
 ;;; Code:
 
-(require 'cc-vars)
-(require 'cc-packages)
 
-;; Emacs cache
-(setq user-emacs-directory "~/.cache/emacs")
-(use-package no-littering
-  :demand t)
 
-(require 'cc-locale)
-(require 'cc-themes)
-(require 'cc-better-defaults)
-(require 'cc-ivy-counsel)
-(require 'cc-hydra)
-(require 'cc-dev)
+(provide 'cc-elisp)
 
-(provide 'cc-core)
-
-;;; cc-core.el ends here
+;;; cc-elisp.el ends here

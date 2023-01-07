@@ -6,6 +6,8 @@
 - [ ] org-mode
 - [ ] C++
 - [ ] Python
+- [ ] Try hydra examples
+  - or use-package repeat-map
 
 * DONEs
 - [X] better default

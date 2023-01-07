@@ -22,6 +22,7 @@
 ;;; Code:
 (use-package
   magit
+  :ensure-system-package git
   :custom (magit-clone-set-remote.pushDefault t)
   :config (global-unset-key (kbd "C-c M-g"))
   :bind
@@ -29,13 +30,6 @@
 
 (use-package
   projectile
-  :init
-  (projectile-mode 1)
-  (which-key-add-key-based-replacements "C-c p" "projectile")
-  (which-key-add-key-based-replacements "C-c p 4" "ctl-x-4-prefix")
-  (which-key-add-key-based-replacements "C-c p 5" "ctl-x-5-prefix")
-  (which-key-add-key-based-replacements "C-c p s" "projectile-grep")
-  (which-key-add-key-based-replacements "C-c p x" "projectile-run")
   :custom
   (projectile-completion-system 'ivy)
   (projectile-enable-caching t)
@@ -44,14 +38,21 @@
   :diminish
   ;; :delight '(:eval (concat " P[" (projectile-project-name) "]"))
   :config
+  (projectile-mode 1)
+  (which-key-add-key-based-replacements "C-c p" "projectile")
+  (which-key-add-key-based-replacements "C-c p 4" "ctl-x-4-prefix")
+  (which-key-add-key-based-replacements "C-c p 5" "ctl-x-5-prefix")
+  (which-key-add-key-based-replacements "C-c p s" "projectile-grep")
+  (which-key-add-key-based-replacements "C-c p x" "projectile-run")
   (add-to-list 'projectile-globally-ignored-directories "elpa")
   (add-to-list 'projectile-globally-ignored-directories ".mypy_cache"))
 
 ;; git: highlight changes
 (use-package
   git-gutter+
+  :demand t
   :diminish
-  :init
+  :config
   (global-git-gutter+-mode 1))
 
 ;; company-mode
@@ -66,7 +67,8 @@
 ;; Auto Completion
 (use-package
   company
-  :init (global-company-mode 1)
+  :demand t
+  :config (global-company-mode 1)
   :diminish company-mode
   :custom
   (company-transformers '(company-sort-by-backend-importance))

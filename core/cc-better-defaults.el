@@ -81,8 +81,8 @@
   :demand
   :diminish which-key-mode
   :custom (which-key-idle-delay 1)
-  :init (which-key-mode 1)
   :config
+  (which-key-mode 1)
   (which-key-add-key-based-replacements "C-c m" "mode-commands")
   (which-key-add-key-based-replacements "C-x 8" "strange-chars")
   (which-key-add-key-based-replacements "C-x RET" "coding-system")
@@ -133,14 +133,16 @@
 
 (use-package
   hl-todo
-  :init
+  :demand t
+  :config
   (global-hl-todo-mode 1))
 
 ;; Better C-w action
 (use-package
   whole-line-or-region
+  :demand t
   :diminish whole-line-or-region-local-mode
-  :init (whole-line-or-region-global-mode 1))
+  :config (whole-line-or-region-global-mode 1))
 
 ;; It can help you to move your cursor to ANY position in emacs
 ;; by using only 3 times key press.
@@ -153,7 +155,7 @@
 (use-package
   smartparens
   :diminish smartparens-mode
-  :init (require ' smartparens-config)
+  :config (require ' smartparens-config)
   :hook ((org-mode . smartparens-mode)
 	 (prog-mode . smartparens-mode))
   :bind (:map emacs-lisp-mode-map

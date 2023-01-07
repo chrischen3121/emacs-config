@@ -48,10 +48,8 @@
 
 ;; Globally ensure package installation
 (setq use-package-always-ensure t)
-;; (setq use-package-verbose t)
-;; (use-package
-;;   use-package-ensure-system-package
-;;   :ensure t)
+(setq use-package-verbose t)
+(use-package use-package-ensure-system-package)
 
 ;; M-x auto-package-update-now
 (use-package auto-package-update

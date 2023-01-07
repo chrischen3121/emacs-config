@@ -37,7 +37,7 @@
 	 ("C-d" . ivy-switch-buffer-kill)
 	 :map ivy-reverse-i-search-map
 	 ("C-d" . ivy-reverse-i-search-kill))
-  :init
+  :config
   (ivy-mode 1))
 
 ;; counsel
@@ -65,7 +65,7 @@
 
 (use-package ivy-rich
   :after (ivy counsel)
-  :init
+  :config
   (ivy-rich-mode 1))
 
 ;; Improved Candidate Sorting with prescient.el
