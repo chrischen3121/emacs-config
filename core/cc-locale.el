@@ -29,7 +29,7 @@
 		    :font "Hack" :height cc/default-font-size)
 
 (set-face-attribute 'fixed-pitch nil
-		    :font "WenQuanyi Micro Hei Mono" :height cc/default-font-size)
+		    :font "WenQuanYi Micro Hei Mono" :height cc/default-font-size)
 
 (set-face-attribute 'variable-pitch nil
 		    :font "Hack"

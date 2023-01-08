@@ -36,9 +36,17 @@
 (require 'cc-better-defaults)
 (require 'cc-ivy-counsel)
 ;; (require 'cc-exwm)
+
+(add-to-list 'load-path (expand-file-name "org" core-dir))
 (require 'cc-org)
+(require 'cc-agenda)
+(require 'cc-org-publish)
+(require 'cc-org-roam)
+
 (require 'cc-hydra) ; TODO:
 (require 'cc-dev)
+
+
 
 (provide 'cc-core)
 

@@ -1,4 +1,4 @@
-;;; cc-vars.el --- Define Variables
+;;; cc-agenda.el --- Org Agenda Configuration
 
 ;; Author: chrischen
 ;; Maintainer: chrischen
@@ -23,28 +23,15 @@
 
 ;;; Code:
 
-(defcustom cc/default-font-size 180
-  "Adjust this font size for your system."
-  :type 'integer
-  :group 'cc-config)
+(setq org-agenda-files
+      (directory-files-recursively cc/agenda-home-dir ".org$")
+      org-deadline-warning-days 3
+      org-clock-out-remove-zero-time-clocks t
+      org-clock-out-when-done t
+      org-agenda-start-with-log-mode t
+      org-log-done 'time
+      org-log-into-drawer t)
 
-(defcustom cc/default-variable-font-size 180
-  "Adjust this font size for your system."
-  :type 'integer
-  :group 'cc-config)
+(provide 'cc-agenda)
 
-(defcustom cc/frame-transparency '(90 . 90)
-  "Make frame transparency overridable."
-  :type '(cons integer integer)
-  :group 'cc-config)
-
-(defcustom cc/agenda-home-dir "~/TODOs"
-  "Agenda home directory"
-  :type 'string
-  :group 'cc-org-config)
-
-
-
-(provide 'cc-vars)
-
-;;; cc-vars.el ends here
+;;; cc-agenda.el ends here

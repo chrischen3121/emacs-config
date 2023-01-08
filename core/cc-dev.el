@@ -123,8 +123,8 @@
 (use-package
   flycheck
   :diminish flycheck-mode
-  :config
-  (which-key-add-keymap-based-replacements flycheck-mode-map "C-c !" "flycheck")
+  :init
+  (which-key-add-key-based-replacements "C-c !" "flycheck")
   :commands flycheck-mode
   :delight
   :hook prog-mode

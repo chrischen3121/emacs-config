@@ -135,6 +135,10 @@
 	("C-c m a i" . anki-editor-insert-note)
 	("C-c m a c" . anki-editor-cloze-dwim)))
 
+;; TODO:
+;; org-transclusion
+;; org-tree-slide
+
 (provide 'cc-org)
 
 ;;; cc-org.el ends here

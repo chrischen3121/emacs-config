@@ -1,4 +1,4 @@
-;;; cc-vars.el --- Define Variables
+;;; cc-org-roam.el --- Org Roam Configuration
 
 ;; Author: chrischen
 ;; Maintainer: chrischen
@@ -23,28 +23,8 @@
 
 ;;; Code:
 
-(defcustom cc/default-font-size 180
-  "Adjust this font size for your system."
-  :type 'integer
-  :group 'cc-config)
-
-(defcustom cc/default-variable-font-size 180
-  "Adjust this font size for your system."
-  :type 'integer
-  :group 'cc-config)
-
-(defcustom cc/frame-transparency '(90 . 90)
-  "Make frame transparency overridable."
-  :type '(cons integer integer)
-  :group 'cc-config)
-
-(defcustom cc/agenda-home-dir "~/TODOs"
-  "Agenda home directory"
-  :type 'string
-  :group 'cc-org-config)
 
 
+(provide 'cc-org-roam)
 
-(provide 'cc-vars)
-
-;;; cc-vars.el ends here
+;;; cc-org-roam.el ends here
