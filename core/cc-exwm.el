@@ -1,4 +1,4 @@
-;;; cc-core.el --- Core Configuration
+;;; cc-exwm.el --- exwm configuration
 
 ;; Author: chrischen
 ;; Maintainer: chrischen
@@ -23,23 +23,13 @@
 
 ;;; Code:
 
-(require 'cc-vars)
-(require 'cc-packages)
+(use-package exwm
+  :demand t
+  :config
+  (require 'exwm)
+  (require 'exwm-config)
+  (exwm-config-example))
 
-;; Emacs cache
-(setq user-emacs-directory "~/.cache/emacs")
-(use-package no-littering
-  :demand t)
+(provide 'cc-exwm)
 
-(require 'cc-locale)
-(require 'cc-themes)
-(require 'cc-better-defaults)
-(require 'cc-ivy-counsel)
-;; (require 'cc-exwm)
-(require 'cc-org)
-(require 'cc-hydra) ; TODO:
-(require 'cc-dev)
-
-(provide 'cc-core)
-
-;;; cc-core.el ends here
+;;; cc-exwm.el ends here

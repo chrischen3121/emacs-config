@@ -52,21 +52,6 @@
 	 ("C-r" . 'counsel-minibuffer-history))
   :init (counsel-mode 1))
 
-;; helpful
-(use-package
-  helpful
-  :after counsel
-  :commands (helpful-callable helpful-variable helpful-command helpful-key)
-  :custom
-  (counsel-describe-function-function #'helpful-callable)
-  (counsel-describe-variable-function #'helpful-variable)
-  :bind (:map counsel-mode-map
-	 ([remap describe-key] . helpful-key)
-	 ([remap describe-symbol] . helpful-symbol)
-	 ([remap describe-command] . helpful-command)
-	 :map emacs-lisp-mode-map
-	 ("C-c d" . helpful-at-point)))
-
 (use-package ivy-rich
   :after (ivy counsel)
   :config
@@ -81,6 +66,22 @@
   ;; to have sorting remembered across sessions!
   (prescient-persist-mode 1)
   (ivy-prescient-mode 1))
+
+;; helpful
+(use-package
+  helpful
+  :after counsel
+  :commands (helpful-callable helpful-variable helpful-command helpful-key)
+  :custom
+  (counsel-describe-function-function #'helpful-callable)
+  (counsel-describe-variable-function #'helpful-variable)
+  :bind (:map counsel-mode-map
+	 ([remap describe-key] . helpful-key)
+	 ([remap describe-symbol] . helpful-symbol)
+	 ([remap describe-command] . helpful-command)
+	 :map emacs-lisp-mode-map
+	 ("C-c d" . helpful-at-point)))
+(global-set-key (kbd "C-h c") 'describe-char)
 
 (provide 'cc-ivy-counsel)
 

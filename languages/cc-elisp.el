@@ -23,7 +23,8 @@
 
 ;;; Code:
 
-
+;; TODO: edebug
+;; (use-package edebug)
 
 (provide 'cc-elisp)
 

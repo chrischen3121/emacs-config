@@ -29,12 +29,12 @@
 		    :font "Hack" :height cc/default-font-size)
 
 (set-face-attribute 'fixed-pitch nil
-		    :font "Hack" :height cc/default-font-size)
+		    :font "WenQuanyi Micro Hei Mono" :height cc/default-font-size)
 
 (set-face-attribute 'variable-pitch nil
 		    :font "Hack"
 		    :height cc/default-variable-font-size
-		    :weight 'bold)
+		    :weight 'regular)
 
 (set-fontset-font t 'emoji
 		  (font-spec :family "Noto Color Emoji" :height cc/default-font-size))

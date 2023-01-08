@@ -42,6 +42,7 @@
   :custom (which-key-idle-delay 1)
   :config
   (which-key-mode 1)
+  (which-key-add-key-based-replacements "C-c t" "toggles")
   (which-key-add-key-based-replacements "C-c m" "mode-commands")
   (which-key-add-key-based-replacements "C-x 8" "strange-chars")
   (which-key-add-key-based-replacements "C-x RET" "coding-system")
@@ -168,7 +169,10 @@
 (use-package command-log-mode
   :diminish command-log-mode
   :config
-  (global-command-log-mode 1))
+  (global-unset-key (kbd "C-c o"))
+  (global-command-log-mode 1)
+  :bind
+  ("C-c t o" . clm/toggle-command-log-buffer))
 
 ;; ripgrep
 (use-package rg
