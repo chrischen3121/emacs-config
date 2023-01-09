@@ -22,15 +22,32 @@
 ;;
 
 ;;; Code:
-
-(setq org-agenda-files
-      (directory-files-recursively cc/agenda-home-dir ".org$")
-      org-deadline-warning-days 3
-      org-clock-out-remove-zero-time-clocks t
-      org-clock-out-when-done t
-      org-agenda-start-with-log-mode t
-      org-log-done 'time
-      org-log-into-drawer t)
+(use-package org
+  :custom
+  (org-agenda-files (directory-files-recursively cc/agenda-home-dir ".org$"))
+  (org-deadline-warning-days 3)
+  (org-clock-out-remove-zero-time-clocks t)
+  (org-clock-out-when-done t)
+  (org-agenda-start-with-log-mode t)
+  (org-log-done 'time)
+  (org-log-into-drawer t)
+  (org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "HOLD(h@)"  "|" "DONE(d!)" "CANCELED(c)")
+		       (sequence "REPORT(r)" "REVIEW(v)" "WAIT(w@/!)" "BUG(b)" "KNOWNCAUSE(k)" "|" "FIXED(f)" "CANCELED(c@)")))
+  (org-todo-keyword-faces '(("TODO" . "dark salmon")
+			    ("NEXT" . "light blue")
+			    ("HOLD" . "medium purple")
+			    ("DONE" . "light green")
+			    ("CANCELED" .  "dark gray")
+			    ("REPORT" .  "dark salmon")
+			    ("WAIT" .  "medium purple")
+			    ("BUG" .  "salmon")
+			    ("KNOWNCAUSE" .  "dark green")
+			    ("FIXED" . "dark green")))
+  (org-todo-state-tags-triggers
+   '(("HOLD" ("NEXT") ("HOLD" . t))
+     ("NEXT" ("HOLD") ("NEXT" . t))
+     ("DONE" ("HOLD") ("NEXT"))
+     ("TODO" ("NEXT") ("HOLD")))))
 
 (provide 'cc-agenda)
 
