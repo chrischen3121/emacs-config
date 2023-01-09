@@ -23,6 +23,13 @@
 
 ;;; Code:
 
+(use-package
+  elisp-mode
+  :ensure nil
+  :bind
+  (:map emacs-lisp-mode-map
+	("C-c ! r" . check-parens)))
+
 ;; TODO: edebug
 ;; (use-package edebug)
 
