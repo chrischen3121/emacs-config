@@ -79,6 +79,7 @@
 	("M-S-<return>" . org-table-copy-down)
 	("S-<return>" . org-insert-todo-heading))
   :config
+  (which-key-add-keymap-based-replacements org-mode-map "C-c \"" "org-plot")
   (dolist (face '((org-level-1 . 1.3)
 		  (org-level-2 . 1.15)
 		  (org-level-3 . 1.1)
@@ -114,12 +115,6 @@
   (visual-fill-column-width 100)
   ;; (visual-fill-column-center-text t)
   :hook (visual-line-mode . visual-fill-column-mode))
-
-;; superstar
-(use-package
-  org-superstar
-  :custom (org-superstar-special-todo-items t)
-  :hook (org-mode . org-superstar-mode))
 
 ;; anki-editor
 (use-package
