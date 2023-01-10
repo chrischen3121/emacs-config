@@ -34,6 +34,12 @@
 
 (use-package
   projectile
+  :init
+  (which-key-add-key-based-replacements "C-c p" "projectile")
+  (which-key-add-key-based-replacements "C-c p 4" "ctl-x-4-prefix")
+  (which-key-add-key-based-replacements "C-c p 5" "ctl-x-5-prefix")
+  (which-key-add-key-based-replacements "C-c p s" "projectile-grep")
+  (which-key-add-key-based-replacements "C-c p x" "projectile-run")
   :custom
   (projectile-completion-system 'ivy)
   (projectile-enable-caching t)
@@ -44,11 +50,6 @@
   ;; :delight '(:eval (concat " P[" (projectile-project-name) "]"))
   :config
   (projectile-mode 1)
-  (which-key-add-key-based-replacements "C-c p" "projectile")
-  (which-key-add-key-based-replacements "C-c p 4" "ctl-x-4-prefix")
-  (which-key-add-key-based-replacements "C-c p 5" "ctl-x-5-prefix")
-  (which-key-add-key-based-replacements "C-c p s" "projectile-grep")
-  (which-key-add-key-based-replacements "C-c p x" "projectile-run")
   (add-to-list 'projectile-globally-ignored-directories "elpa")
   (add-to-list 'projectile-globally-ignored-directories ".mypy_cache"))
 

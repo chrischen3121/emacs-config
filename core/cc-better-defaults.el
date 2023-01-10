@@ -103,6 +103,15 @@
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
+;; ibuffer
+(use-package ibuffer
+  :bind
+  ("C-x C-b" . ibuffer))
+
+(use-package all-the-icons-ibuffer
+  :after (ibuffer all-the-icons)
+  :hook (ibuffer-mode . all-the-icons-ibuffer-mode))
+
 ;; all-the-icons
 (use-package
   all-the-icons

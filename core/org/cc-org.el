@@ -77,7 +77,9 @@
   :bind
   (:map org-mode-map
 	("M-S-<return>" . org-table-copy-down)
-	("S-<return>" . org-insert-todo-heading))
+	("S-<return>" . org-insert-todo-heading)
+	("C-c m p" . org-set-property)
+	("C-c m P" . org-set-property-and-value))
   :config
   (which-key-add-keymap-based-replacements org-mode-map "C-c \"" "org-plot")
   (dolist (face '((org-level-1 . 1.3)

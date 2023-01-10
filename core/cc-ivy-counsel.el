@@ -54,14 +54,20 @@
 
 (use-package ivy-rich
   :after (ivy counsel)
-  :config
+  :init
   (ivy-rich-mode 1))
+
+(use-package all-the-icons-ivy-rich
+  :after (ivy-rich all-the-icons)
+  :init
+  (all-the-icons-ivy-rich-mode 1))
 
 ;; Improved Candidate Sorting with prescient.el
 (use-package ivy-prescient
   :after counsel
   :custom
   (ivy-prescient-enable-filtering nil)
+  ;; (ivy-initial-inputs-alist (assq-delete-all 'counsel-M-x ivy-initial-inputs-alist)) ; remove leading '^'
   :config
   ;; to have sorting remembered across sessions!
   (prescient-persist-mode 1)
@@ -82,6 +88,9 @@
 	 :map emacs-lisp-mode-map
 	 ("C-c d" . helpful-at-point)))
 (global-set-key (kbd "C-h c") 'describe-char)
+
+(setq al '((a . "foo") (b . "bar")))
+;; (assoc 'a al)
 
 (provide 'cc-ivy-counsel)
 

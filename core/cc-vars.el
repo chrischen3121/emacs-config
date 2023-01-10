@@ -41,9 +41,27 @@
 (defcustom cc/agenda-home-dir "~/TODOs"
   "Agenda home directory"
   :type 'string
-  :group 'cc-org-config)
+  :group 'cc-agenda-config)
 
+(defcustom cc/org-quicknotes-filename "quicknotes.org"
+  "Agenda quicknotes filename"
+  :type 'string
+  :group 'cc-agenda-config)
 
+(defcustom cc/org-todo-filename "todo.org"
+  "Agenda todo filename"
+  :type 'string
+  :group 'cc-agenda-config)
+
+(defcustom cc/org-journal-filename "journal.org"
+  "Agenda journal filename"
+  :type 'string
+  :group 'cc-agenda-config)
+
+(defcustom cc/org-habits-filename "habits.org"
+  "Agenda habits filename"
+  :type 'string
+  :group 'cc-agenda-config)
 
 (provide 'cc-vars)
 
