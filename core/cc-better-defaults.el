@@ -44,7 +44,8 @@
   (which-key-mode 1)
   (which-key-add-key-based-replacements "C-c t" "toggles")
   (which-key-add-key-based-replacements "C-c m" "mode-commands")
-  (which-key-add-key-based-replacements "C-c g" "navigating")
+  (which-key-add-key-based-replacements "C-c g" "navigate")
+  (which-key-add-key-based-replacements "C-c r" "refactor")
   (which-key-add-key-based-replacements "C-x 8" "strange-chars")
   (which-key-add-key-based-replacements "C-x RET" "coding-system")
   (which-key-add-key-based-replacements "C-x p" "project")
@@ -59,10 +60,7 @@
   (which-key-add-key-based-replacements "M-s h" "highlight"))
 
 ;; recentf-mode
-(recentf-mode 1)
-;; C-c r f -- use counsel-recentf
-(global-set-key (kbd "C-c r c") 'recentf-cleanup)
-(which-key-add-key-based-replacements "C-c r" "recentf")
+(recentf-mode 1) ; C-c C-f -- use counsel-recentf
 (global-hl-line-mode 1)
 
 ;; Line numbers mode

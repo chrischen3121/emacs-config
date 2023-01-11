@@ -50,7 +50,7 @@
   :diminish counsel-mode
   :bind (("C-c g i" . counsel-imenu)
 	 ("C-c g b" . counsel-bookmark)
-	 ("C-c r f" . counsel-recentf)
+	 ("C-c C-f" . counsel-recentf)
 	 :map minibuffer-local-map
 	 ("C-r" . 'counsel-minibuffer-history))
   :init (counsel-mode 1))
