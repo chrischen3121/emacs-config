@@ -44,7 +44,7 @@
   (which-key-mode 1)
   (which-key-add-key-based-replacements "C-c t" "toggles")
   (which-key-add-key-based-replacements "C-c m" "mode-commands")
-  (which-key-add-key-based-replacements "C-c C-n" "navigating")
+  (which-key-add-key-based-replacements "C-c g" "navigating")
   (which-key-add-key-based-replacements "C-x 8" "strange-chars")
   (which-key-add-key-based-replacements "C-x RET" "coding-system")
   (which-key-add-key-based-replacements "C-x p" "project")
