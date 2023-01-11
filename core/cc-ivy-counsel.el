@@ -89,7 +89,7 @@
 	 ([remap describe-symbol] . helpful-symbol)
 	 ([remap describe-command] . helpful-command)
 	 :map emacs-lisp-mode-map
-	 ("C-c d" . helpful-at-point)))
+	 ("C-h ." . helpful-at-point)))
 (global-set-key (kbd "C-h c") 'describe-char)
 
 (setq al '((a . "foo") (b . "bar")))

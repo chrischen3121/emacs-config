@@ -27,19 +27,35 @@
   :commands
   (lsp lsp-deferred)
   :custom
-  (lsp-keymap-prefix "C-c l")
+  (lsp-keymap-prefix "C-l")
   :config
-  (lsp-enable-which-key-integration t))
+  (lsp-enable-which-key-integration t)
+  :bind
+  (:map lsp-mode-map
+	("C-c f" . lsp-format-buffer)
+	("C-c g d" . lsp-find-declaration)
+	("C-c g t" . lsp-find-type-definition)
+	("C-c r r" . lsp-rename)))
 
 (use-package lsp-ui
   :after lsp-mode
-  :commands lsp-ui-mode)
+  :commands lsp-ui-mode
+  :custom
+  (lsp-ui-doc-position 'bottom)
+  (lsp-ui-sideline-enable nil)
+  (lsp-ui-sideline-show-hover nil)
+  :config
+  (which-key-add-keymap-based-replacements lsp-mode-map "C-c g g" )
+  :bind
+  (:map lsp-mode-map
+	("C-c g g" . lsp-ui-peek-find-definitions)
+	("C-c g r" . lsp-ui-peek-find-references)
+	("C-c g i" . lsp-ui-peek-find-implementation)))
 
-
-;; (use-package lsp-ivy
-;;   :after (lsp-mode ivy)
-;;   :commands
-;;   (lsp-ivy-workspace-symbol lsp-ivy-global-workspace-symbol))
+(use-package lsp-ivy
+  :after (lsp-mode ivy)
+  :commands
+  (lsp-ivy-workspace-symbol lsp-ivy-global-workspace-symbol))
 
 (provide 'cc-lsp-common)
 

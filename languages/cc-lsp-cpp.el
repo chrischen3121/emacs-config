@@ -23,20 +23,20 @@
 
 ;;; Code:
 
-;; (defun cc/lsp-cpp-compile ()
-;;   (interactive)
-;;   (unless (file-exists-p "Makefile")
-;;     (set (make-local-variable 'compile-command)
-;;	 (let ((file (file-name-nondirectory buffer-file-name)))
-;;	   (format "g++ -std=c++20 -Wall -g -o %s %s" (file-name-sans-extension file) file))))
-;;   (compile compile-command))
+(defun cc/lsp-cpp-compile ()
+  (interactive)
+  (unless (file-exists-p "Makefile")
+    (set (make-local-variable 'compile-command)
+	 (let ((file (file-name-nondirectory buffer-file-name)))
+	   (format "g++ -std=c++20 -Wall -g -o %s %s" (file-name-sans-extension file) file))))
+  (compile compile-command))
 
-;; (use-package cc-mode
-;;   :commands c++-mode
-;;   :hook (c++-mode . lsp-deferred)
-;;   :bind
-;;   (:map c++mode-map
-;;	("C-c m c" . cc/lsp-cpp-compile)))
+(use-package cc-mode
+  :commands c++-mode
+  :hook (c++-mode . lsp-deferred)
+  :bind
+  (:map c++-mode-map
+	("C-c m c" . cc/lsp-cpp-compile)))
 
 (provide 'cc-lsp-cpp)
 
