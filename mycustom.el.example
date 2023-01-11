@@ -3,11 +3,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(cc/agenda-home-dir "~/Dropbox/TODOs")
  '(cc/default-font-size 130)
- '(cc/default-variable-font-size 130)
+ '(cc/default-variable-font-size 135)
  '(cc/frame-transparency '(95 . 95))
- '(yas-snippet-dirs '("~/.config/emacs/snippets"))
- )
+ '(yas-snippet-dirs '("~/.config/emacs/snippets")))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

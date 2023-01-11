@@ -1,4 +1,4 @@
-;;; cc-vars.el --- Define Variables
+;;; cc-var-define.el --- Define Variables
 
 ;; Author: chrischen
 ;; Maintainer: chrischen
@@ -63,6 +63,26 @@
   :type 'string
   :group 'cc-agenda-config)
 
-(provide 'cc-vars)
+(defcustom cc/org-roam-directory "~/second-brain/pages"
+  "org roam home directory"
+  :type 'string
+  :group 'cc-org-roam)
 
-;;; cc-vars.el ends here
+(defcustom cc/org-roam-dailies-directory "~/second-brain/journals"
+  "org roam dailies directory"
+  :type 'string
+  :group 'cc-org-roam)
+
+(defcustom cc/org-roam-db-location "~/second-brain/org-roam.db"
+  "org roam db directory"
+  :type 'string
+  :group 'cc-org-roam)
+
+(defcustom cc/org-roam-graph-viewer "google-chrome-stable"
+  "executable to view org roam graph"
+  :type 'string
+  :group 'cc-org-roam)
+
+(provide 'cc-var-define)
+
+;;; cc-var-define.el ends here

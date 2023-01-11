@@ -1,4 +1,4 @@
-;;; cc-org-roam.el --- Org Roam Configuration
+;;; cc-lsp-python.el --- Python lsp-mode configuration
 
 ;; Author: chrischen
 ;; Maintainer: chrischen
@@ -23,8 +23,14 @@
 
 ;;; Code:
 
+(use-package python
+  :custom
+  (python-shell-interpreter "ipython")
+  (python-shell-interpreter-args "--simple-prompt -i")
+  (python-indent-guess-indent-offset t)
+  (python-indent-guess-indent-offset-verbose nil))
 
 
-(provide 'cc-org-roam)
+(provide 'cc-lsp-python)
 
-;;; cc-org-roam.el ends here
+;;; cc-lsp-python.el ends here

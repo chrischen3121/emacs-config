@@ -1,4 +1,4 @@
-;;; cc-core.el --- Core Configuration
+;;; cc-lsp-common.el --- Common configuration for lsp-mode
 
 ;; Author: chrischen
 ;; Maintainer: chrischen
@@ -23,29 +23,24 @@
 
 ;;; Code:
 
-(require 'cc-var-define)
-(require 'cc-packages)
+(use-package lsp-mode
+  :commands
+  (lsp lsp-deferred)
+  :custom
+  (lsp-keymap-prefix "C-c l")
+  :config
+  (lsp-enable-which-key-integration t))
 
-;; Emacs cache
-(setq user-emacs-directory "~/.cache/emacs")
-(use-package no-littering
-  :demand t)
+(use-package lsp-ui
+  :after lsp-mode
+  :commands lsp-ui-mode)
 
-(require 'cc-locale)
-(require 'cc-themes)
-(require 'cc-better-defaults)
-(require 'cc-ivy-counsel)
-;; (require 'cc-exwm)
 
-(add-to-list 'load-path (expand-file-name "cc-org" core-dir))
-(require 'cc-org)
-(require 'cc-agenda)
-(require 'cc-org-publish)
-(require 'cc-org-roam)
+;; (use-package lsp-ivy
+;;   :after (lsp-mode ivy)
+;;   :commands
+;;   (lsp-ivy-workspace-symbol lsp-ivy-global-workspace-symbol))
 
-(require 'cc-hydra) ; TODO:
-(require 'cc-dev)
+(provide 'cc-lsp-common)
 
-(provide 'cc-core)
-
-;;; cc-core.el ends here
+;;; cc-lsp-common.el ends here

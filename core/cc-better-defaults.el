@@ -44,7 +44,7 @@
   (which-key-mode 1)
   (which-key-add-key-based-replacements "C-c t" "toggles")
   (which-key-add-key-based-replacements "C-c m" "mode-commands")
-  (which-key-add-key-based-replacements "C-c n" "navigating")
+  (which-key-add-key-based-replacements "C-c C-n" "navigating")
   (which-key-add-key-based-replacements "C-x 8" "strange-chars")
   (which-key-add-key-based-replacements "C-x RET" "coding-system")
   (which-key-add-key-based-replacements "C-x p" "project")
@@ -141,6 +141,9 @@
 ;; Easy shortcut to switch windows
 (use-package
   ace-window
+  :config
+  (custom-set-faces
+   '(aw-leading-char-face ((t (:foreground "sky blue" :weight bold :height 3.0)))))
   :bind (([remap other-window] . ace-window)
 	 ("C-x w" . ace-swap-window)))
 

@@ -1,4 +1,4 @@
-;;; cc-core.el --- Core Configuration
+;;; cc-lsp-cpp.el --- C++ lsp-mode configuration
 
 ;; Author: chrischen
 ;; Maintainer: chrischen
@@ -23,29 +23,21 @@
 
 ;;; Code:
 
-(require 'cc-var-define)
-(require 'cc-packages)
+;; (defun cc/lsp-cpp-compile ()
+;;   (interactive)
+;;   (unless (file-exists-p "Makefile")
+;;     (set (make-local-variable 'compile-command)
+;;	 (let ((file (file-name-nondirectory buffer-file-name)))
+;;	   (format "g++ -std=c++20 -Wall -g -o %s %s" (file-name-sans-extension file) file))))
+;;   (compile compile-command))
 
-;; Emacs cache
-(setq user-emacs-directory "~/.cache/emacs")
-(use-package no-littering
-  :demand t)
+;; (use-package cc-mode
+;;   :commands c++-mode
+;;   :hook (c++-mode . lsp-deferred)
+;;   :bind
+;;   (:map c++mode-map
+;;	("C-c m c" . cc/lsp-cpp-compile)))
 
-(require 'cc-locale)
-(require 'cc-themes)
-(require 'cc-better-defaults)
-(require 'cc-ivy-counsel)
-;; (require 'cc-exwm)
+(provide 'cc-lsp-cpp)
 
-(add-to-list 'load-path (expand-file-name "cc-org" core-dir))
-(require 'cc-org)
-(require 'cc-agenda)
-(require 'cc-org-publish)
-(require 'cc-org-roam)
-
-(require 'cc-hydra) ; TODO:
-(require 'cc-dev)
-
-(provide 'cc-core)
-
-;;; cc-core.el ends here
+;;; cc-lsp-cpp.el ends here

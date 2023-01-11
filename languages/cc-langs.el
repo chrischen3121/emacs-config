@@ -25,6 +25,10 @@
 
 (require 'cc-elisp)
 
+(require 'cc-lsp-common)
+(require 'cc-lsp-cpp)
+;; (require 'cc-lsp-python)
+
 (provide 'cc-langs)
 
 ;;; cc-langs.el ends here

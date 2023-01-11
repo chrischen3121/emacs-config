@@ -87,9 +87,12 @@
   :diminish company-mode
   :custom
   (company-transformers '(company-sort-by-backend-importance))
-
   :hook ((text-mode . cc/set-text-backends)
-	 (prog-mode . cc/set-prog-backends)))
+	 (prog-mode . cc/set-prog-backends))
+  :bind ("C-c m c" . completion-at-point))
+
+(use-package company-box
+  :hook (company-mode . company-box-mode))
 
 (use-package
   yasnippet
