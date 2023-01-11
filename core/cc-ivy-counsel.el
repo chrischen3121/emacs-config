@@ -48,7 +48,10 @@
 (use-package
   counsel
   :diminish counsel-mode
-  :bind (:map minibuffer-local-map
+  :bind (("C-c n i" . counsel-imenu)
+	 ("C-c n b" . counsel-bookmark)
+	 ("C-c r f" . counsel-recentf)
+	 :map minibuffer-local-map
 	 ("C-r" . 'counsel-minibuffer-history))
   :init (counsel-mode 1))
 

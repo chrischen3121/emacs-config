@@ -57,7 +57,8 @@
 
 (defun cc/org-set-backends ()
   (setq-local company-backends '((company-capf company-yasnippet company-ispell
-					       :separate))))
+					       :separate)))
+  (setq-local company-minimum-prefix-length 2))
 
 (defun cc/org-mode-hook-function ()
   (flyspell-mode-on)
@@ -70,14 +71,15 @@
 (use-package org
   :commands org-mode
   :hook
+
   (org-mode . cc/org-mode-hook-function)
   :custom
   (org-ellipsis " ▾")
   (org-hide-emphasis-markers t)
-  :bind
   (:map org-mode-map
 	("M-S-<return>" . org-table-copy-down)
 	("S-<return>" . org-insert-todo-heading)
+	("C-c m s" . org-insert-structure-template) ; or C-c C-, by default
 	("C-c m p" . org-set-property)
 	("C-c m P" . org-set-property-and-value))
   :config
@@ -91,7 +93,17 @@
 		  (org-level-7 . 1.0)
 		  (org-level-8 . 1.0)))
     (set-face-attribute (car face) nil :font "Hack" :weight 'bold :height (cdr face)))
-  (dolist (lang '(("py" . "src python")
+
+  ;; org-babel structure template
+  ;; Tips: C-c C-c to execute src block
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     (python . t)))
+  (setq org-confirm-babel-evaluate nil)
+  ;; (require 'org-tempo) ; use '<s' TAB to add a src block
+  (dolist (lang '(("py" . "src python") ; default :results value
+		  ("pyo" . "src python :results output")
 		  ("cpp" . "src cpp")
 		  ("bash" . "src bash")
 		  ("elisp" . "src emacs-lisp")))
@@ -135,6 +147,7 @@
 ;; TODO:
 ;; org-transclusion
 ;; org-tree-slide
+;; org-babel-tangle
 
 (provide 'cc-org)
 

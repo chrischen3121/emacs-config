@@ -44,6 +44,7 @@
   (which-key-mode 1)
   (which-key-add-key-based-replacements "C-c t" "toggles")
   (which-key-add-key-based-replacements "C-c m" "mode-commands")
+  (which-key-add-key-based-replacements "C-c n" "navigating")
   (which-key-add-key-based-replacements "C-x 8" "strange-chars")
   (which-key-add-key-based-replacements "C-x RET" "coding-system")
   (which-key-add-key-based-replacements "C-x p" "project")
@@ -59,7 +60,7 @@
 
 ;; recentf-mode
 (recentf-mode 1)
-(global-set-key (kbd "C-c r f") 'recentf-open-files)
+;; C-c r f -- use counsel-recentf
 (global-set-key (kbd "C-c r c") 'recentf-cleanup)
 (which-key-add-key-based-replacements "C-c r" "recentf")
 (global-hl-line-mode 1)

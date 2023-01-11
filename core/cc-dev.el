@@ -26,9 +26,10 @@
   :custom
   (magit-clone-set-remote.pushDefault t)
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
-  :config (global-unset-key (kbd "C-c M-g"))
   :bind
-  ("C-x g" . magit-status))
+  ("C-x g" . magit-status)
+  :config
+  (global-unset-key (kbd "C-c M-g")))
 
 ;; (use-package forge) ; Github issues & pull requests
 
@@ -70,11 +71,13 @@
 ;; company-mode
 (defun cc/set-text-backends ()
   (setq-local company-backends
-	      '((company-ispell :separate) company-files)))
+	      '((company-ispell :separate) company-files))
+  (setq-local company-minimum-prefix-length 2))
 
 (defun cc/set-prog-backends ()
   (setq-local company-backends
-	      '((company-capf company-keywords :separate) company-ispell)))
+	      '((company-capf company-keywords :separate) company-ispell))
+  (setq-local company-minimum-prefix-length 1))
 
 ;; Auto Completion
 (use-package
@@ -84,7 +87,7 @@
   :diminish company-mode
   :custom
   (company-transformers '(company-sort-by-backend-importance))
-  (company-minimum-prefix-length 1)
+
   :hook ((text-mode . cc/set-text-backends)
 	 (prog-mode . cc/set-prog-backends)))
 
