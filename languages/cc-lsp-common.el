@@ -37,6 +37,16 @@
 	("C-c g t" . lsp-find-type-definition)
 	("C-c r r" . lsp-rename)))
 
+(use-package dap-mode
+  :after lsp-mode
+  ;; :init
+  ;; (which-key-add-keymap-based-replacements lsp-mode-map "C-l d" '("debug" . ))
+  :hook (lsp-mode . dap-mode)
+  :bind
+  (:map dap-mode-map
+	("C-l d d" . dap-debug)
+	("C-l d e" . dap-debug-edit-template)))
+
 (use-package lsp-ui
   :after lsp-mode
   :commands lsp-ui-mode
@@ -44,8 +54,6 @@
   (lsp-ui-doc-position 'bottom)
   (lsp-ui-sideline-enable nil)
   (lsp-ui-sideline-show-hover nil)
-  :config
-  (which-key-add-keymap-based-replacements lsp-mode-map "C-c g g" )
   :bind
   (:map lsp-mode-map
 	("C-c g g" . lsp-ui-peek-find-definitions)

@@ -78,7 +78,7 @@
 			(org-agenda-files :level . 1)))
   ;; todo keywords
   (org-export-with-todo-keywords nil)
-  (org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "HOLD(h@)"  "|" "DONE(d!)" "CANCELED(c)")))
+  (org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "HOLD(h)"  "|" "DONE(d!)" "CANCELED(c)")))
   (org-todo-keyword-faces '(("TODO" . "dark salmon")
 			    ("NEXT" . "light blue")
 			    ("HOLD" . "medium purple")

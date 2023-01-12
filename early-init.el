@@ -25,23 +25,22 @@
 
 ;; Prevent any garbage collection from happening during load time.
 (defconst cc/1mb (* 1024 1024))
-(defconst cc/30mb (* 30 cc/1mb))
-(defconst cc/50mb (* 50 cc/1mb))
+(defconst cc/100mb (* 100 cc/1mb))
 
 (defun cc/defer-garbage-collection ()
   (setq gc-cons-threshold most-positive-fixnum))
 
 (defun cc/restore-garbage-collection ()
   (run-at-time 1 nil (lambda ()
-                       (setq gc-cons-threshold cc/30mb))))
+		       (setq gc-cons-threshold cc/100mb))))
 
 
 (defun cc/display-startup-time ()
   (message "Emacs loaded in %s with %d garbage collections."
-           (format "%.2f seconds"
-                   (float-time
-                    (time-subtract after-init-time before-init-time)))
-           gcs-done))
+	   (format "%.2f seconds"
+		   (float-time
+		    (time-subtract after-init-time before-init-time)))
+	   gcs-done))
 
 (add-hook 'emacs-startup-hook #'cc/restore-garbage-collection)
 (add-hook 'emacs-startup-hook #'cc/display-startup-time)

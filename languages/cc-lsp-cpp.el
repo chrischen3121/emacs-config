@@ -31,9 +31,17 @@
 	   (format "g++ -std=c++20 -Wall -g -o %s %s" (file-name-sans-extension file) file))))
   (compile compile-command))
 
+(defun cc/cpp-setup ()
+  (setq-local company-idle-delay 0.0
+	      company-minimum-prefix-length 1
+	      lsp-idle-delay 0.1))
+
 (use-package cc-mode
+  :after company
   :commands c++-mode
-  :hook (c++-mode . lsp-deferred)
+  :hook
+  (c++-mode . lsp-deferred)
+  (c++-mode . cc/cpp-setup)
   :bind
   (:map c++-mode-map
 	("C-c m c" . cc/lsp-cpp-compile)))
