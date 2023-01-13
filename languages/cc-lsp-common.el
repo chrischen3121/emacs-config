@@ -27,7 +27,7 @@
   :commands
   (lsp lsp-deferred)
   :custom
-  (lsp-keymap-prefix "C-l")
+  (lsp-keymap-prefix "C-c l")
   :config
   (lsp-enable-which-key-integration t)
   :bind
@@ -44,8 +44,8 @@
   :hook (lsp-mode . dap-mode)
   :bind
   (:map dap-mode-map
-	("C-l d d" . dap-debug)
-	("C-l d e" . dap-debug-edit-template)))
+	("C-c l d d" . dap-debug)
+	("C-c l d e" . dap-debug-edit-template)))
 
 (use-package lsp-ui
   :after lsp-mode

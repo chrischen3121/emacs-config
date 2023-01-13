@@ -1,4 +1,4 @@
-;;; cc-langs.el --- Programming Languages
+;;; cc-makefile.el --- Summary
 
 ;; Author: chrischen
 ;; Maintainer: chrischen
@@ -23,14 +23,15 @@
 
 ;;; Code:
 
-(require 'cc-elisp)
 
-(require 'cc-lsp-common)
-(require 'cc-lsp-cpp)
-;; (require 'cc-lsp-python)
 
-(require 'cc-makefile)
+(use-package make-mode
+  :custom
+  (tab-width 4)
+  :bind
+  (:map makefile-mode-map
+	("C-c C-f" . nil)))
 
-(provide 'cc-langs)
+(provide 'cc-makefile)
 
-;;; cc-langs.el ends here
+;;; cc-makefile.el ends here
