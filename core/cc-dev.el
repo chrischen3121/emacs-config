@@ -106,11 +106,11 @@
 	(which-key-add-keymap-based-replacements yas-minor-mode-map "C-c y" "yasnippet")
 	:bind
 	(:map yas-minor-mode-map
-	("C-c &" . nil)
-	("C-c y n" . yas-new-snippet)
-	("C-c y r" . yas-reload-all)
-	("C-c y v" . yas-visit-snippet-file)
-	("M-/" . company-yasnippet)))
+	 ("C-c &" . nil)
+	 ("C-c y n" . yas-new-snippet)
+	 ("C-c y r" . yas-reload-all)
+	 ("C-c y v" . yas-visit-snippet-file)
+	 ("M-/" . company-yasnippet)))
 
 ;; hideshow
 (use-package
@@ -122,10 +122,10 @@
 	(which-key-add-keymap-based-replacements hs-minor-mode-map "C-c h" "hideshow")
 	:bind
 	(:map hs-minor-mode-map
-	("C-c @" . nil)
-	("C-c h <backtab>" . hs-show-all)
-	("C-c h l" . hs-hide-level)
-	("C-c h <tab>" . hs-toggle-hiding)))
+	 ("C-c @" . nil)
+	 ("C-c h <backtab>" . hs-show-all)
+	 ("C-c h l" . hs-hide-level)
+	 ("C-c h <tab>" . hs-toggle-hiding)))
 
 ;; flyspell & flycheck
 (use-package

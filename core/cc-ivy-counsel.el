@@ -32,15 +32,16 @@
 
 (use-package ivy
   :diminish
-  :bind (("C-s" . swiper)
-	 :map ivy-minibuffer-map
-	 ("TAB" . ivy-alt-done)
-	 ("C-l" . ivy-backward-delete-char)
-	 ("C-j" . ivy-immediate-done)
-	 :map ivy-switch-buffer-map
-	 ("C-d" . ivy-switch-buffer-kill)
-	 :map ivy-reverse-i-search-map
-	 ("C-d" . ivy-reverse-i-search-kill))
+  :bind
+  (("C-s" . swiper)
+   :map ivy-minibuffer-map
+   ("TAB" . ivy-alt-done)
+   ("C-l" . ivy-backward-delete-char)
+   ("C-j" . ivy-immediate-done)
+   :map ivy-switch-buffer-map
+   ("C-d" . ivy-switch-buffer-kill)
+   :map ivy-reverse-i-search-map
+   ("C-d" . ivy-reverse-i-search-kill))
   :config
   (ivy-mode 1))
 
@@ -48,11 +49,12 @@
 (use-package
   counsel
   :diminish counsel-mode
-  :bind (("C-c g i" . counsel-imenu)
-	 ("C-c g b" . counsel-bookmark)
-	 ("C-c C-f" . counsel-recentf)
-	 :map minibuffer-local-map
-	 ("C-r" . 'counsel-minibuffer-history))
+  :bind
+  (("C-c g i" . counsel-imenu)
+   ("C-c g b" . counsel-bookmark)
+   ("C-c C-f" . counsel-recentf)
+   :map minibuffer-local-map
+   ("C-r" . 'counsel-minibuffer-history))
   :init (counsel-mode 1))
 
 (use-package ivy-rich
@@ -84,12 +86,13 @@
   :custom
   (counsel-describe-function-function #'helpful-callable)
   (counsel-describe-variable-function #'helpful-variable)
-  :bind (:map counsel-mode-map
-	 ([remap describe-key] . helpful-key)
-	 ([remap describe-symbol] . helpful-symbol)
-	 ([remap describe-command] . helpful-command)
-	 :map emacs-lisp-mode-map
-	 ("C-h ." . helpful-at-point)))
+  :bind
+  (:map counsel-mode-map
+   ([remap describe-key] . helpful-key)
+   ([remap describe-symbol] . helpful-symbol)
+   ([remap describe-command] . helpful-command)
+   :map emacs-lisp-mode-map
+   ("C-h ." . helpful-at-point)))
 (global-set-key (kbd "C-h c") 'describe-char)
 
 (setq al '((a . "foo") (b . "bar")))

@@ -24,9 +24,9 @@
 
 ;;; Code:
 (setq inhibit-startup-message t ; Don't show the splash screen
-      visible-bell t ; Flash when the bell rings
-      make-backup-files nil
-      auto-save-default nil)
+	  visible-bell t ; Flash when the bell rings
+	  make-backup-files nil
+	  auto-save-default nil)
 
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
@@ -75,7 +75,7 @@
 (defun cc/before-exit-emacs ()
   "Prompt the user to confirm before exiting Emacs."
   (if (yes-or-no-p "Are you sure you want to exit Emacs?")
-      (kill-emacs)))
+	  (kill-emacs)))
 
 (add-hook 'kill-emacs-query-functions #'cc/before-exit-emacs)
 
@@ -115,7 +115,7 @@
 (use-package
   all-the-icons
   :config (unless (member "all-the-icons" (font-family-list))
-	    (all-the-icons-install-fonts t)))
+		(all-the-icons-install-fonts t)))
 
 (use-package
   all-the-icons-dired
@@ -126,10 +126,9 @@
 (use-package
   whitespace
   :hook (before-save . whitespace-cleanup)
-
   :bind
   (:map prog-mode-map
-	("C-c m w" . whitespace-mode)))
+   ("C-c m w" . whitespace-mode)))
 
 ;; doom-modeline
 (use-package doom-modeline
@@ -142,8 +141,9 @@
   :config
   (custom-set-faces
    '(aw-leading-char-face ((t (:foreground "sky blue" :weight bold :height 3.0)))))
-  :bind (([remap other-window] . ace-window)
-	 ("C-x w" . ace-swap-window)))
+  :bind
+  (([remap other-window] . ace-window)
+   ("C-x w" . ace-swap-window)))
 
 (use-package
   hl-todo

@@ -27,7 +27,7 @@
 
 (require 'cc-lsp-common)
 (require 'cc-lsp-cpp)
-;; (require 'cc-lsp-python)
+(require 'cc-lsp-python)
 
 (require 'cc-makefile)
 

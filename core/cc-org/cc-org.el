@@ -71,19 +71,19 @@
 (use-package org
   :commands org-mode
   :hook
-
   (org-mode . cc/org-mode-hook-function)
   :custom
   (org-ellipsis " ▾")
   (org-hide-emphasis-markers t)
+  :bind
   (:map org-mode-map
-	("M-S-<return>" . org-table-copy-down)
-	("S-<return>" . org-insert-todo-heading)
-	("C-c m s" . org-insert-structure-template) ; or C-c C-, by default
-	("C-c m p" . org-set-property)
-	("C-c m P" . org-set-property-and-value)
-	("C-c C-f" . nil) ; conflict with recentf-open-files
-	)
+   ("M-S-<return>" . org-table-copy-down)
+   ("S-<return>" . org-insert-todo-heading)
+   ("C-c m s" . org-insert-structure-template) ; or C-c C-, by default
+   ("C-c m p" . org-set-property)
+   ("C-c m P" . org-set-property-and-value)
+   ("C-c C-f" . nil) ; conflict with recentf-open-files
+   )
   :config
   (which-key-add-keymap-based-replacements org-mode-map "C-c \"" "org-plot")
   (dolist (face '((org-level-1 . 1.3)
@@ -142,9 +142,9 @@
   :init (which-key-add-keymap-based-replacements org-mode-map "C-c m a" "anki-editor")
   :bind
   (:map org-mode-map
-	("C-c m a p" . anki-editor-push-notes)
-	("C-c m a i" . anki-editor-insert-note)
-	("C-c m a c" . anki-editor-cloze-dwim)))
+   ("C-c m a p" . anki-editor-push-notes)
+   ("C-c m a i" . anki-editor-insert-note)
+   ("C-c m a c" . anki-editor-cloze-dwim)))
 
 ;; TODO:
 ;; org-transclusion

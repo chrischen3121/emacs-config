@@ -24,12 +24,19 @@
 ;;; Code:
 
 (use-package python
+  :hook
+  (python-mode . lsp-deferred)
   :custom
   (python-shell-interpreter "ipython")
   (python-shell-interpreter-args "--simple-prompt -i")
   (python-indent-guess-indent-offset t)
-  (python-indent-guess-indent-offset-verbose nil))
-
+  (python-indent-guess-indent-offset-verbose nil)
+  (lsp-pylsp-plugins-black-enabled t)
+  ;; (lsp-pylsp-plugins-pycodestyle-enabled t)
+  (lsp-pylsp-plugins-pylint-enabled t)
+  :bind
+  (:map python-mode-map
+   ("C-c C-f" . nil)))
 
 (provide 'cc-lsp-python)
 
