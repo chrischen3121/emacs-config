@@ -26,15 +26,15 @@
 (defun cc/lsp-cpp-compile ()
   (interactive)
   (unless (file-exists-p "Makefile")
-    (set (make-local-variable 'compile-command)
+	(set (make-local-variable 'compile-command)
 	 (let ((file (file-name-nondirectory buffer-file-name)))
 	   (format "g++ -std=c++20 -Wall -g -o %s %s" (file-name-sans-extension file) file))))
   (compile compile-command))
 
 (defun cc/cpp-setup ()
   (setq-local company-idle-delay 0.0
-	      company-minimum-prefix-length 1
-	      lsp-idle-delay 0.1))
+		  company-minimum-prefix-length 1
+		  lsp-idle-delay 0.1))
 
 (use-package cc-mode
   :after company
@@ -44,7 +44,11 @@
   (c++-mode . cc/cpp-setup)
   :bind
   (:map c++-mode-map
-	("C-c m c" . cc/lsp-cpp-compile)))
+		("C-c m c" . cc/lsp-cpp-compile)))
+
+(use-package cmake-mode
+  :hook
+  (cmake-mode . lsp-deferred))
 
 (provide 'cc-lsp-cpp)
 

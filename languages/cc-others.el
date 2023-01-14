@@ -1,4 +1,4 @@
-;;; cc-makefile.el --- Summary
+;;; cc-others.el --- Other Languages
 
 ;; Author: chrischen
 ;; Maintainer: chrischen
@@ -23,15 +23,30 @@
 
 ;;; Code:
 
-
-
+;; Makefile
 (use-package make-mode
   :custom
   (tab-width 4)
   :bind
   (:map makefile-mode-map
-	("C-c C-f" . nil)))
+		("C-c C-f" . nil)))
 
-(provide 'cc-makefile)
+;; Plantuml
+(use-package
+  plantuml-mode
+  :mode "\\.puml\\'"
+  :interpreter "plantuml"
+  :ensure-system-package plantuml
+  :custom (plantuml-default-exec-mode 'executable))
 
-;;; cc-makefile.el ends here
+(use-package dockerfile-mode
+  :hook (dockerfile-mode . lsp-deferred))
+
+(use-package yaml-mode
+  :hook
+  (yaml-mode . lsp-deferred)
+  (yaml-mode . smartparens-mode))
+
+(provide 'cc-others)
+
+;;; cc-others.el ends here

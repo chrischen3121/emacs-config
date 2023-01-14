@@ -26,26 +26,36 @@
 (use-package lsp-mode
   :commands
   (lsp lsp-deferred)
+  :hook
+  (js-mode . lsp-deferred)
+  (sh-mode . lsp-deferred)
+  (html-mode . lsp-deferred)
+  (css-mode . lsp-deferred)
   :custom
   (lsp-keymap-prefix "C-c l")
   :config
   (lsp-enable-which-key-integration t)
   :bind
   (:map lsp-mode-map
-	("C-c f" . lsp-format-buffer)
-	("C-c g d" . lsp-find-declaration)
-	("C-c g t" . lsp-find-type-definition)
-	("C-c r r" . lsp-rename)))
+   ("C-c f" . lsp-format-buffer)
+   ("C-c g d" . lsp-find-declaration)
+   ("C-c g t" . lsp-find-type-definition)
+   ("C-c r r" . lsp-rename)))
 
-(use-package dap-mode
-  :after lsp-mode
-  ;; :init
-  ;; (which-key-add-keymap-based-replacements lsp-mode-map "C-l d" '("debug" . ))
-  :hook (lsp-mode . dap-mode)
-  :bind
-  (:map dap-mode-map
-	("C-c l d d" . dap-debug)
-	("C-c l d e" . dap-debug-edit-template)))
+;; TODO:
+;; (use-package dap-mode
+;;   :after lsp-mode
+;;   ;; :init
+;;   ;; (which-key-add-keymap-based-replacements lsp-mode-map "C-l d" '("debug" . ))
+;;   :hook (lsp-mode . dap-mode)
+;;   :bind
+;;   (:map dap-mode-map
+;;    ("C-c l d d" . dap-debug)
+;;    ("C-c l d e" . dap-debug-edit-template)))
+
+;; ;; optionally if you want to use debugger
+;; (use-package dap-mode)
+;; ;; (use-package dap-LANGUAGE) to load the dap adapter for your language
 
 (use-package lsp-ui
   :after lsp-mode
@@ -56,9 +66,9 @@
   (lsp-ui-sideline-show-hover nil)
   :bind
   (:map lsp-mode-map
-	("C-c g g" . lsp-ui-peek-find-definitions)
-	("C-c g r" . lsp-ui-peek-find-references)
-	("C-c g i" . lsp-ui-peek-find-implementation)))
+   ("C-c g g" . lsp-ui-peek-find-definitions)
+   ("C-c g r" . lsp-ui-peek-find-references)
+   ("C-c g i" . lsp-ui-peek-find-implementation)))
 
 (use-package lsp-ivy
   :after (lsp-mode ivy)

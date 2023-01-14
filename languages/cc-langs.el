@@ -29,7 +29,7 @@
 (require 'cc-lsp-cpp)
 (require 'cc-lsp-python)
 
-(require 'cc-makefile)
+(require 'cc-others)
 
 (provide 'cc-langs)
 
