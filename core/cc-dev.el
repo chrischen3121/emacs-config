@@ -146,8 +146,9 @@
 (use-package
 	flyspell
 	:diminish flyspell-mode
-	:hook ((prog-mode . flyspell-prog-mode)
-	 (text-mode . flyspell-mode))
+	:hook
+	((prog-mode . flyspell-prog-mode)
+	 (org-mode . flyspell-mode))
 	:bind
 	(:map flyspell-mode-map
 	("C-c $" . nil)
