@@ -76,7 +76,7 @@
 	 ))
   (org-refile-targets '((nil :level . 1)
 			(org-agenda-files :level . 1)))
-  ;; todo keywords
+  ;; TODO keywords
   (org-export-with-todo-keywords nil)
   (org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "HOLD(h)"  "|" "DONE(d!)" "CANCELED(c)")))
   (org-todo-keyword-faces '(("TODO" . "dark salmon")
@@ -84,6 +84,7 @@
 				("HOLD" . "medium purple")
 				("DONE" . "light green")
 				("CANCELED" .  "dark gray")))
+  (org-clock-in-switch-to-state "NEXT")
   ;; clock configuration
   (org-deadline-warning-days 5)
   (org-clock-out-remove-zero-time-clocks t)
@@ -94,6 +95,7 @@
   (org-log-into-drawer t)
   (org-clock-persist t)
   (org-clock-persist-query-resume nil) ; Do not prompt to resume an active clock
+
   ;; agenda configuration
   (org-tag-alist '(("Learning" . ?l)
 		   ("ML" . ?L)
@@ -146,13 +148,13 @@
 	   (org-agenda-time-grid nil)))
 
 	 ;; Archive search
-	 ("A" "Archive search" search ""
+	 ("A" "Archive Search" search ""
 	  ((org-agenda-files (directory-files-recursively cc/agenda-home-dir ".org_archive$"))))
 
 	 ;; effort
-	 ("t" "Effort Table" todo "DONE"
+	 ("t" "Effort Table" alltodo ""; "DONE"
 	  ((org-columns-default-format-for-agenda
-	"%10CATEGORY %15ITEM(TASK) %2PRIORITY %SCHEDULED %DEADLINE %5EFFORT(ESTIMATED){:} %5CLOCKSUM(SPENT) %TAGS")
+	"%10CATEGORY %15ITEM(TASK) %2PRIORITY %5TODO %SCHEDULED %DEADLINE %5EFFORT(ESTIMATED){:} %5CLOCKSUM(SPENT)")
 	   (org-agenda-view-columns-initially t)
 	   (org-agenda-span 30)))
 
