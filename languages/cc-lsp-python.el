@@ -20,7 +20,6 @@
 
 ;;; Commentary:
 ;;
-
 ;;; Code:
 
 (use-package python
@@ -36,7 +35,14 @@
   (lsp-pylsp-plugins-pylint-enabled t)
   :bind
   (:map python-mode-map
-   ("C-c C-f" . nil)))
+		("C-c C-f" . nil)))
+
+(use-package poetry
+  :ensure t
+  :init
+  (poetry-tracking-mode 1)
+  :custom
+  (poetry-tracking-strategy 'projectile))
 
 (provide 'cc-lsp-python)
 
