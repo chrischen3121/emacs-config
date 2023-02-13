@@ -3,5 +3,5 @@
 # key: !
 # --
 #!/usr/bin/env bash
-set -ux -o pipefail
+set -u -o pipefail
 $0
