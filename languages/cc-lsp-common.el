@@ -33,6 +33,7 @@
   (css-mode . lsp-deferred)
   :custom
   (lsp-keymap-prefix "C-c l")
+  (lsp-completion-provider :none)
   :config
   (lsp-enable-which-key-integration t)
   :bind

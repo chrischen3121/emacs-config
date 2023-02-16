@@ -42,6 +42,7 @@
   :hook
   (c++-mode . lsp-deferred)
   (c++-mode . cc/cpp-setup)
+  ;; (c++-mode . cc/set-prog-backends)
   :bind
   (:map c++-mode-map
 		("C-c m c" . cc/lsp-cpp-compile)))

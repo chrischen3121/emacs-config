@@ -77,7 +77,8 @@
 
 (defun cc/set-prog-backends ()
 	(setq-local company-backends
-				'((company-capf company-keywords :separate) company-ispell))
+				'((company-yasnippet company-capf company-keywords :separate)
+				  company-ispell))
 	(setq-local company-minimum-prefix-length 1))
 
 ;; Auto Completion
