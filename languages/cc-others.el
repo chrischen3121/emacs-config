@@ -47,6 +47,10 @@
   (yaml-mode . lsp-deferred)
   (yaml-mode . smartparens-mode))
 
+(use-package graphviz-dot-mode
+  :mode "\\.dot\\'"
+  :ensure-system-package dot)
+
 (provide 'cc-others)
 
 ;;; cc-others.el ends here

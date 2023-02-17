@@ -2,6 +2,6 @@
 # name: bang
 # key: !
 # --
-#!/usr/bin/env bash
+#!/bin/bash
 set -u -o pipefail
 $0
