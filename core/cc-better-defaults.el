@@ -101,6 +101,8 @@
 
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+(global-set-key (kbd "S-<SPC>") 'set-mark-command)
+
 
 ;; ibuffer
 (use-package ibuffer
