@@ -43,6 +43,7 @@
   :hook (dockerfile-mode . lsp-deferred))
 
 (use-package yaml-mode
+  :mode "\\mongod.conf\\'"
   :hook
   (yaml-mode . lsp-deferred)
   (yaml-mode . smartparens-mode))

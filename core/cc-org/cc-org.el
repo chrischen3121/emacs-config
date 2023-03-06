@@ -74,7 +74,7 @@
   (org-mode . cc/org-mode-hook-function)
   :custom
   (org-ellipsis " ▾")
-  (org-hide-emphasis-markers t)
+  ;; (org-hide-emphasis-markers t)
   :bind
   (:map org-mode-map
    ("M-S-<return>" . org-table-copy-down)

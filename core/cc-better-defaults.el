@@ -33,6 +33,7 @@
 (tooltip-mode -1)
 (delete-selection-mode 1)
 (set-fringe-mode 10) ; Give some breathing room
+(setq-default indent-tabs-mode nil)
 
 ;; which-key
 (use-package
