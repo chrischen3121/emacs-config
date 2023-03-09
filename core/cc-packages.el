@@ -61,6 +61,22 @@
   (auto-package-update-maybe)
   (auto-package-update-at-time "09:00"))
 
+;; quelpa
+(unless (package-installed-p 'quelpa)
+  (with-temp-buffer
+	(url-insert-file-contents "https://raw.githubusercontent.com/quelpa/quelpa/master/quelpa.el")
+	(eval-buffer)
+	(quelpa-self-upgrade)))
+
+;; disable quelpa-checkout-melpa on startup
+(setq quelpa-update-melpa-p nil)
+(quelpa
+ '(quelpa-use-package
+   :fetcher git
+   :url "https://github.com/quelpa/quelpa-use-package.git"))
+
+(require 'quelpa-use-package)
+
 (provide 'cc-packages)
 
 ;;; cc-packages.el ends here

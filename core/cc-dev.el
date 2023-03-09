@@ -177,6 +177,19 @@
 	:diminish
 	:hook emacs-lisp-mode)
 
+;; Github Copilot
+(use-package copilot
+  :quelpa (copilot :fetcher github
+				   :repo "zerolfx/copilot.el"
+				   :branch "main"
+				   :files ("dist" "*.el")))
+(add-hook 'prog-mode-hook 'copilot-mode)
+
+(with-eval-after-load 'company
+  ;; disable inline previews
+  (delq 'company-preview-if-just-one-frontend company-frontends))
+(define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
+
 (provide 'cc-dev)
 
 ;;; cc-dev.el ends here
