@@ -62,11 +62,25 @@
   :after lsp-mode
   :commands lsp-ui-mode
   :custom
+  (lsp-ui-doc-enable t)
+  (lsp-ui-doc-delay 2)
+  (lsp-ui-doc-show-with-cursor nil)
+  (lsp-ui-doc-show-with-mouse nil)
   (lsp-ui-doc-position 'bottom)
-  (lsp-ui-sideline-enable nil)
+  (lsp-ui-sideline-enable t)
   (lsp-ui-sideline-show-hover nil)
+  (lsp-ui-sideline-show-code-actions t)
+  (lsp-ui-sideline-delay 0.5)
+  (lsp-ui-imenu-enable t)
+  (lsp-ui-imenu-buffer-position 'left)
+  ;; testing
+  (lsp-ui-imenu-auto-refresh t)
+  (lsp-ui-imenu-refresh-delay 5)
   :bind
   (:map lsp-mode-map
+   ("C-c m d" . lsp-ui-doc-glance)
+   ("C-c m a" . lsp-ui-sideline-apply-code-actions)
+   ("C-c m i" . lsp-ui-imenu)
    ("C-c g g" . lsp-ui-peek-find-definitions)
    ("C-c g r" . lsp-ui-peek-find-references)
    ("C-c g i" . lsp-ui-peek-find-implementation)))
