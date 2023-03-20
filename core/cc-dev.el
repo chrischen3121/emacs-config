@@ -189,6 +189,32 @@
   (delq 'company-preview-if-just-one-frontend company-frontends))
 (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
 
+;; Codeium
+;; (use-package codeium
+;;   :quelpa (codeium :fetcher github
+;;                    :repo "Exafunction/codeium.el"
+;;                    :branch "main"
+;;                    :files ("*.el"))
+;;   :defer t
+;;   :init
+;;   ;; (add-to-list 'completion-at-point-functions #'codeium-completion-at-point)
+;;   (add-hook 'python-mode-hook
+;;             (lambda ()
+;;               (setq-local completion-at-point-functions '(codeium-completion-at-point))))
+
+;;   :config
+;;   (setq use-dialog-box t) ; do not use popup boxes
+;;   ;; use M-x codeium-diagnose to see apis/fields that would be sent to the local language server
+;;   (setq codeium-api-enabled
+;;         (lambda (api)
+;;           (memq api '(GetCompletions Heartbeat CancelRequest GetAuthToken RegisterUser auth-redirect AcceptCompletion))))
+
+;;   ;; you can also set a config for a single buffer like this:
+;;   ;; (add-hook 'python-mode-hook
+;;   ;;     (lambda ()
+;;   ;;         (setq-local codeium/editor_options/tab_size 4)))
+;;   )
+
 (provide 'cc-dev)
 
 ;;; cc-dev.el ends here
