@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 set -euxo pipefail
+
+# Next generation, high-performance debugger
 sudo pacman -S lldb
 VSCODE_ROOT_DIR=$HOME/.vscode/extensions/llvm-org.lldb-vscode-0.1.0
 PACKAGE_JSON_URL=https://github.com/llvm/llvm-project/tree/main/lldb/tools/lldb-vscode/package.json

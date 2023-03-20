@@ -31,11 +31,18 @@
   (sh-mode . lsp-deferred)
   (html-mode . lsp-deferred)
   (css-mode . lsp-deferred)
+  ;; TODO (conf-toml-mode . lsp-deferred)
   :custom
   (lsp-keymap-prefix "C-c l")
   (lsp-completion-provider :none)
   :config
   (lsp-enable-which-key-integration t)
+  ;; TODO: ansible
+  ;; (lsp-register-client
+  ;;  (make-lsp-client :new-connection (lsp-stdio-connection "ansible-language-server")
+  ;;                   :major-modes '(yaml-mode)
+  ;;                   :server-id 'ansible))
+  ;; TODO: lsp-register-client for grammarly language server
   :bind
   (:map lsp-mode-map
    ("C-c f" . lsp-format-buffer)

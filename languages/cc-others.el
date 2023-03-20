@@ -29,7 +29,12 @@
   (tab-width 4)
   :bind
   (:map makefile-mode-map
-		("C-c C-f" . nil)))
+        ("C-c C-f" . nil)))
+
+(use-package sh-script
+  :bind
+  (:map sh-mode-map
+        ("C-c C-f" . nil)))
 
 ;; Plantuml
 (use-package
@@ -46,11 +51,15 @@
   :mode "\\mongod.conf\\'"
   :hook
   (yaml-mode . lsp-deferred)
+  (yaml-mode . cc/set-prog-backends)
   (yaml-mode . smartparens-mode))
 
 (use-package graphviz-dot-mode
   :mode "\\.dot\\'"
   :ensure-system-package dot)
+
+(use-package nginx-mode
+  :hook (nginx-mode . lsp-deferred))
 
 (provide 'cc-others)
 
