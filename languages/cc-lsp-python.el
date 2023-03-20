@@ -35,7 +35,7 @@
   (lsp-pylsp-plugins-pylint-enabled t)
   :bind
   (:map python-mode-map
-		("C-c C-f" . nil)))
+        ("C-c C-f" . nil)))
 
 (use-package poetry
   :ensure t
