@@ -83,6 +83,16 @@
   :type 'string
   :group 'cc-org-roam)
 
+(defcustom cc/zotero-bibtex-bib-file "~/Zotero/bibtex.bib"
+  "zotero bibtex bib file"
+  :type 'string
+  :group 'cc-org-roam)
+
+(defcustom cc/org-roam-reference-directory "~/second-brain/pages/references"
+  "org roam reference directory"
+  :type 'string
+  :group 'cc-org-roam)
+
 (provide 'cc-var-define)
 
 ;;; cc-var-define.el ends here

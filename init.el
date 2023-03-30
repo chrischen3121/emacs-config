@@ -1,5 +1,5 @@
 ;;; Commentary:
-;; 
+;;
 
 ;;; Code:
 
@@ -24,7 +24,5 @@
 (message "Loading language modules...")
 (add-to-list 'load-path languages-dir)
 (require 'cc-langs)
-
-(message "Happy Hacking!🌅🚣")
 
 ;;; init.el ends here

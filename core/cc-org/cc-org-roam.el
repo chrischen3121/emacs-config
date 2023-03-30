@@ -33,15 +33,21 @@
   (org-roam-graph-viewer cc/org-roam-graph-viewer)
   (org-roam-dailies-directory cc/org-roam-dailies-directory)
   (org-roam-completion-everywhere t)
-  (org-roam-capture-templates '(("d" "default" plain "%?"
-				 :immediate-finish t
-				 :if-new (file+head "${slug}.org" "#+TITLE: ${title}\n")
-				 :unnarrowed t)
-				("t" "temp" plain "%?"
-				 :immediate-finish t
-				 :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
-						    "#+TITLE: ${title}\n")
-				 :unnarrowed t)))
+  (org-roam-capture-templates
+   '(("d" "default" plain "%?"
+      :immediate-finish t
+      :if-new (file+head "${slug}.org" "#+TITLE: ${title}\n")
+      :unnarrowed t)
+     ("t" "temp" plain "%?"
+      :immediate-finish t
+      :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
+                         "#+TITLE: ${title}\n")
+      :unnarrowed t)
+     ("r" "bibliography reference" plain "%?"
+      :target
+      (file+head "references/${citekey}.org"
+                 "#+TITLE: ${title}\n")
+      :unnarrowed t)))
   :config
   (org-roam-db-autosync-mode)
   (require 'org-roam-protocol)
@@ -54,7 +60,7 @@
    ("C-c n i" . org-roam-node-insert)
    ("C-c n p" . org-id-get-create)
    ("C-c n u" . org-roam-ui-mode)
-   ("C-c n w" . org-roam-migrate-wizard)
+   ("C-c n l" . org-roam-ui-sync-theme)
    :map org-mode-map
    ("C-c n a" . org-roam-alias-add)
    ("C-c n b" . org-roam-buffer-toggle)
@@ -81,11 +87,36 @@
   :bind ("C-c n s" . deft)
   :custom
   (deft-recursive t)
-  ;; For creating files
-  ;; (deft-use-filename-as-title t)
+  (deft-strip-summary-regexp ":PROPERTIES:\n\\(.+\n\\)+:END:\n")
+
+  ;; (deft-use-filename-as-title nil)
   ;; (deft-use-filter-string-for-filename t)
+  ;; disable auto-save
+  (deft-auto-save-interval -1.0)
   (deft-default-extension "org")
   (deft-directory cc/org-roam-directory))
+
+(use-package
+  org-ref
+  :custom
+  (bibtex-completion-bibliography cc/zotero-bibtex-bib-file)
+  (bibtex-completion-notes-path cc/org-roam-reference-directory)
+  (bibtex-completion-pdf-field "file")
+  (bibtex-completion-pdf-open-function
+   (lambda (fpath)
+     (call-process "open" nil 0 nil fpath)))
+  )
+
+(use-package
+  ivy-bibtex
+  :commands ivy-bibtex
+  :after org-ref)
+
+(use-package org-roam-bibtex
+  :after org-roam
+  :hook (org-roam-mode . org-roam-bibtex-mode)
+  :config
+  (require 'org-ref))
 
 (provide 'cc-org-roam)
 

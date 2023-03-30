@@ -32,15 +32,15 @@
 
 (defun cc/restore-garbage-collection ()
   (run-at-time 1 nil (lambda ()
-		       (setq gc-cons-threshold cc/100mb))))
+               (setq gc-cons-threshold cc/100mb))))
 
 
 (defun cc/display-startup-time ()
-  (message "Emacs loaded in %s with %d garbage collections."
-	   (format "%.2f seconds"
-		   (float-time
-		    (time-subtract after-init-time before-init-time)))
-	   gcs-done))
+  (message "Loaded in %s with %d gc. Happy Hacking! 🎉💻🤖🔧"
+       (format "%.2f seconds"
+           (float-time
+            (time-subtract after-init-time before-init-time)))
+       gcs-done))
 
 (add-hook 'emacs-startup-hook #'cc/restore-garbage-collection)
 (add-hook 'emacs-startup-hook #'cc/display-startup-time)
