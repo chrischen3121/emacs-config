@@ -19,22 +19,17 @@
 ;; see <http://www.gnu.org/licenses/>.
 
 ;;; Commentary:
+
+;; This package is used to configure python lsp-mode.
+
+;;; Hints:
+
+;; This package uses poetry.el to activate poetry virtualenv.
+;; Please make sure virtualenv will be activated before starting lsp server.
+;; or you can restart lsp server(lsp-workspace-restart `C-c l w r`) after activating virtualenv manually.
+
 ;;
 ;;; Code:
-
-
-
-;; (use-package lsp-pyright
-;;   :ensure t
-;;   :custom
-;;   ;; (lsp-pyright-venv-directory "~/.cache/pypoetry/virtualenvs")
-;;   (python-shell-interpreter "ipython")
-;;   :hook (python-mode . (lambda ()
-;;                          (require 'lsp-pyright)
-;;                          (lsp-deferred)))
-;;   :bind
-;;   (:map python-mode-map
-;;         ("C-c C-f" . nil)))
 
 (use-package python
   :hook
@@ -44,24 +39,50 @@
   (python-shell-interpreter-args "--simple-prompt -i")
   (python-indent-guess-indent-offset t)
   (python-indent-guess-indent-offset-verbose nil)
-  (lsp-pylsp-plugins-jedi-completion-fuzzy t)
-  (lsp-pylsp-plugins-black-enabled t)
-  (lsp-pylsp-plugins-flake8-enabled nil)
 
-  ;; TODO lsp-pylsp-plugins-jedi-environment
-  ;; set-local lsp-pylsp-plugins-jedi-environment to poetry directory
-  ;; (lsp-pylsp-plugins-pycodestyle-enabled t)
-  ;; (lsp-pylsp-plugins-pylint-enabled t)
+  ;; lsp plugins
+  ;; default jedi
+  (lsp-pylsp-plugins-jedi-completion-fuzzy nil) ; if enabled, it can hit performance
+
+  ;; completion
+  (lsp-pylsp-plugins-jedi-completion-enabled t)
+  (lsp-pylsp-plugins-rope-completion-enabled nil)
+
+  ;; formatting
+  (lsp-pylsp-plugins-black-enabled t) ; black formatting
+  (lsp-pylsp-plugins-yapf-enabled nil) ; yapf formatting
+  (lsp-pylsp-plugins-autopep8-enabled nil) ; autopep8 formatting
+
+  ;; linting
+  (lsp-pylsp-plugins-pyflakes-enabled nil) ; default pyflakes linting
+  (lsp-pylsp-plugins-flake8-enabled nil) ; flake8 linting
+  (lsp-pylsp-plugins-pylint-enabled nil) ; pylint linting
+  (lsp-pylsp-plugins-pycodestyle-enabled nil) ; pycodestyle linting
+  ;; ruff fastest linting
+  ;; pipx inject python-lsp-server python-lsp-ruff
+
+
+  (lsp-pylsp-plugins-mccabe-enabled t) ; mccabe complexity checking
+
+  ;; docstring
+  (lsp-pylsp-plugins-pydocstyle-enabled nil) ; docstring style checking
+
+  ;; refactoring
+  ;; pipx inject python-lsp-server pylsp-rope
+  ;; (lsp-pylsp-rename-backend 'rope)
+
   :bind
   (:map python-mode-map
         ("C-c C-f" . nil)))
 
 (use-package poetry
   :ensure t
-  :init
-  (poetry-tracking-mode 1)
   :custom
-  (poetry-tracking-strategy 'projectile))
+  (poetry-tracking-mode 1)
+  (poetry-tracking-strategy 'switch-buffer)
+  :bind
+  (:map python-mode-map
+        ("C-c m p" . poetry)))
 
 (provide 'cc-lsp-python)
 
