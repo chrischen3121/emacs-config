@@ -22,6 +22,20 @@
 ;;
 ;;; Code:
 
+
+
+;; (use-package lsp-pyright
+;;   :ensure t
+;;   :custom
+;;   ;; (lsp-pyright-venv-directory "~/.cache/pypoetry/virtualenvs")
+;;   (python-shell-interpreter "ipython")
+;;   :hook (python-mode . (lambda ()
+;;                          (require 'lsp-pyright)
+;;                          (lsp-deferred)))
+;;   :bind
+;;   (:map python-mode-map
+;;         ("C-c C-f" . nil)))
+
 (use-package python
   :hook
   (python-mode . lsp-deferred)
@@ -30,9 +44,14 @@
   (python-shell-interpreter-args "--simple-prompt -i")
   (python-indent-guess-indent-offset t)
   (python-indent-guess-indent-offset-verbose nil)
+  (lsp-pylsp-plugins-jedi-completion-fuzzy t)
   (lsp-pylsp-plugins-black-enabled t)
+  (lsp-pylsp-plugins-flake8-enabled nil)
+
+  ;; TODO lsp-pylsp-plugins-jedi-environment
+  ;; set-local lsp-pylsp-plugins-jedi-environment to poetry directory
   ;; (lsp-pylsp-plugins-pycodestyle-enabled t)
-  (lsp-pylsp-plugins-pylint-enabled t)
+  ;; (lsp-pylsp-plugins-pylint-enabled t)
   :bind
   (:map python-mode-map
         ("C-c C-f" . nil)))
