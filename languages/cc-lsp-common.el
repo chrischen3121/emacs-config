@@ -77,7 +77,7 @@
   (lsp-ui-sideline-enable t)
   (lsp-ui-sideline-show-hover nil)
   (lsp-ui-sideline-show-code-actions t)
-  (lsp-ui-sideline-delay 0.5)
+  (lsp-ui-sideline-delay 2)
   (lsp-ui-imenu-enable t)
   (lsp-ui-imenu-buffer-position 'left)
   ;; testing

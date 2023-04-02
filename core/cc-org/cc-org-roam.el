@@ -98,6 +98,7 @@
 
 (use-package
   org-ref
+  :defer t
   :custom
   (bibtex-completion-bibliography cc/zotero-bibtex-bib-file)
   (bibtex-completion-notes-path cc/org-roam-reference-directory)

@@ -24,9 +24,9 @@
 
 ;;; Code:
 (setq inhibit-startup-message t ; Don't show the splash screen
-	  visible-bell t ; Flash when the bell rings
-	  make-backup-files nil
-	  auto-save-default nil)
+      visible-bell t ; Flash when the bell rings
+      make-backup-files nil
+      auto-save-default nil)
 
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
@@ -76,7 +76,7 @@
 (defun cc/before-exit-emacs ()
   "Prompt the user to confirm before exiting Emacs."
   (if (yes-or-no-p "Are you sure you want to exit Emacs?")
-	  (kill-emacs)))
+      (kill-emacs)))
 
 (add-hook 'kill-emacs-query-functions #'cc/before-exit-emacs)
 
@@ -118,7 +118,7 @@
 (use-package
   all-the-icons
   :config (unless (member "all-the-icons" (font-family-list))
-		(all-the-icons-install-fonts t)))
+        (all-the-icons-install-fonts t)))
 
 (use-package
   all-the-icons-dired
@@ -174,10 +174,10 @@
   :diminish smartparens-mode
   :config (require ' smartparens-config)
   :hook ((org-mode . smartparens-mode)
-	 (prog-mode . smartparens-mode))
+     (prog-mode . smartparens-mode))
   :bind (:map emacs-lisp-mode-map
-	 ("C-M-f" . sp-forward-sexp)
-	 ("C-M-b" . sp-backward-sexp)))
+     ("C-M-f" . sp-forward-sexp)
+     ("C-M-b" . sp-backward-sexp)))
 
 ;; command-log-mode: show keybinding history
 (use-package command-log-mode
@@ -190,6 +190,7 @@
 
 ;; ripgrep
 (use-package rg
+  :defer t
   :ensure-system-package (rg . ripgrep))
 
 ;; TODO edebug
