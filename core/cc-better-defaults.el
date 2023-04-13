@@ -136,7 +136,9 @@
 ;; doom-modeline
 (use-package doom-modeline
   :init (doom-modeline-mode 1)
-  :custom ((doom-modeline-height 15)))
+  :custom
+  (doom-modeline-height 15)
+  (doom-modeline-env-version nil))
 
 ;; Easy shortcut to switch windows
 (use-package

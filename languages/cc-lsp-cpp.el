@@ -34,7 +34,8 @@
 (defun cc/cpp-setup ()
   (setq-local company-idle-delay 0.2
               company-minimum-prefix-length 1
-              lsp-idle-delay 0.2))
+              lsp-idle-delay 0.2
+              tab-width 2))
 
 (use-package cc-mode
   :after company
@@ -45,7 +46,8 @@
   ;; (c++-mode . cc/set-prog-backends)
   :bind
   (:map c++-mode-map
-        ("C-c m c" . cc/lsp-cpp-compile)))
+        ("C-c m c" . cc/lsp-cpp-compile)
+        ("C-c m m" . woman)))
 
 (use-package cmake-mode
   :hook
