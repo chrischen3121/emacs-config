@@ -181,13 +181,16 @@
   :quelpa (copilot :fetcher github
                    :repo "zerolfx/copilot.el"
                    :branch "main"
-                   :files ("dist" "*.el")))
-(add-hook 'prog-mode-hook 'copilot-mode)
+                   :files ("dist" "*.el"))
+  :init
+  (with-eval-after-load 'company
+    ;; disable inline previews
+    (delq 'company-preview-if-just-one-frontend company-frontends))
+  :hook (prog-mode . copilot-mode)
+  :bind
+  (:map copilot-completion-map
+        ("<tab>" . copilot-accept-completion)))
 
-(with-eval-after-load 'company
-  ;; disable inline previews
-  (delq 'company-preview-if-just-one-frontend company-frontends))
-(define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
 
 ;; Codeium
 ;; (use-package codeium
