@@ -70,6 +70,8 @@
   :config
   (global-git-gutter+-mode 1))
 
+;; Auto Completion - company-mode or corfu
+
 ;; company-mode
 (defun cc/set-text-backends ()
   (setq-local company-backends
@@ -83,7 +85,6 @@
                 company-ispell))
   (setq-local company-minimum-prefix-length 1))
 
-;; Auto Completion
 (use-package
   company
   :demand t
@@ -189,34 +190,10 @@
   :hook (prog-mode . copilot-mode)
   :bind
   (:map copilot-completion-map
-        ("<tab>" . copilot-accept-completion)))
+        ("<tab>" . copilot-accept-completion)
+        ("M-n" . copilot-next-completion)
+        ("M-p" . copilot-previous-completion)))
 
-
-;; Codeium
-;; (use-package codeium
-;;   :quelpa (codeium :fetcher github
-;;                    :repo "Exafunction/codeium.el"
-;;                    :branch "main"
-;;                    :files ("*.el"))
-;;   :defer t
-;;   :init
-;;   ;; (add-to-list 'completion-at-point-functions #'codeium-completion-at-point)
-;;   (add-hook 'python-mode-hook
-;;             (lambda ()
-;;               (setq-local completion-at-point-functions '(codeium-completion-at-point))))
-
-;;   :config
-;;   (setq use-dialog-box t) ; do not use popup boxes
-;;   ;; use M-x codeium-diagnose to see apis/fields that would be sent to the local language server
-;;   (setq codeium-api-enabled
-;;         (lambda (api)
-;;           (memq api '(GetCompletions Heartbeat CancelRequest GetAuthToken RegisterUser auth-redirect AcceptCompletion))))
-
-;;   ;; you can also set a config for a single buffer like this:
-;;   ;; (add-hook 'python-mode-hook
-;;   ;;     (lambda ()
-;;   ;;         (setq-local codeium/editor_options/tab_size 4)))
-;;   )
 
 (provide 'cc-dev)
 

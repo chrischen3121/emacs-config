@@ -57,7 +57,7 @@
 
 (defun cc/org-set-backends ()
   (setq-local company-backends '((company-capf company-yasnippet company-ispell
-						   :separate)))
+                           :separate)))
   (setq-local company-minimum-prefix-length 2))
 
 (defun cc/org-mode-hook-function ()
@@ -87,29 +87,29 @@
   :config
   (which-key-add-keymap-based-replacements org-mode-map "C-c \"" "org-plot")
   (dolist (face '((org-level-1 . 1.3)
-		  (org-level-2 . 1.15)
-		  (org-level-3 . 1.1)
-		  (org-level-4 . 1.0)
-		  (org-level-5 . 1.0)
-		  (org-level-6 . 1.0)
-		  (org-level-7 . 1.0)
-		  (org-level-8 . 1.0)))
-	(set-face-attribute (car face) nil :font "Hack" :weight 'bold :height (cdr face)))
+          (org-level-2 . 1.15)
+          (org-level-3 . 1.1)
+          (org-level-4 . 1.0)
+          (org-level-5 . 1.0)
+          (org-level-6 . 1.0)
+          (org-level-7 . 1.0)
+          (org-level-8 . 1.0)))
+    (set-face-attribute (car face) nil :font "Hack" :weight 'bold :height (cdr face)))
 
   ;; org-babel structure template
   ;; Tips: C-c C-c to execute src block
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((emacs-lisp . t)
-	 (python . t)))
+     (python . t)))
   (setq org-confirm-babel-evaluate nil)
   ;; (require 'org-tempo) ; use '<s' TAB to add a src block
   (dolist (lang '(("py" . "src python") ; default :results value
-		  ("pyo" . "src python :results output")
-		  ("cpp" . "src cpp")
-		  ("bash" . "src bash")
-		  ("elisp" . "src emacs-lisp")))
-	(add-to-list 'org-structure-template-alist lang)))
+          ("pyo" . "src python :results output")
+          ("cpp" . "src cpp")
+          ("bash" . "src bash")
+          ("elisp" . "src emacs-lisp")))
+    (add-to-list 'org-structure-template-alist lang)))
 
 
 (require 'org-indent)
