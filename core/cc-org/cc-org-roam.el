@@ -97,16 +97,12 @@
   (deft-directory cc/org-roam-directory))
 
 (use-package
-  org-ref
+  bibtex-completion
   :defer t
   :custom
   (bibtex-completion-bibliography cc/zotero-bibtex-bib-file)
   (bibtex-completion-notes-path cc/org-roam-reference-directory)
-  (bibtex-completion-pdf-field "file")
-  (bibtex-completion-pdf-open-function
-   (lambda (fpath)
-     (call-process "open" nil 0 nil fpath)))
-  )
+  (bibtex-completion-pdf-field "file"))
 
 (use-package
   ivy-bibtex
