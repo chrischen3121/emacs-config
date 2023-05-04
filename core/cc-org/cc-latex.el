@@ -1,4 +1,4 @@
-;;; cc-core.el --- Core Configuration
+;;; cc-latex.el --- Summary
 
 ;; Author: chrischen
 ;; Maintainer: chrischen
@@ -23,30 +23,20 @@
 
 ;;; Code:
 
-(require 'cc-var-define)
-(require 'cc-packages)
+(use-package cdlatex
+  :defer t
+  :quelpa (cdlatex :fetcher github :repo "cdominik/cdlatex"))
 
-;; Emacs cache
-(setq user-emacs-directory "~/.cache/emacs")
-(use-package no-littering
-  :demand t)
+(use-package tex
+  :ensure auctex
+  :custom
+  (TeX-parse-self t)
+  (TeX-PDF-mode t)
+  (TeX-DVI-via-PDFTeX t)
+  :hook
+  (LaTeX-mode . turn-on-cdlatex)
+  (LaTeX-mode . turn-on-reftex))
 
-(require 'cc-locale)
-(require 'cc-themes)
-(require 'cc-better-defaults)
-(require 'cc-ivy-counsel)
-;; (require 'cc-exwm)
+(provide 'cc-latex)
 
-(add-to-list 'load-path (expand-file-name "cc-org" core-dir))
-(require 'cc-latex)
-(require 'cc-org)
-(require 'cc-agenda)
-(require 'cc-org-publish)
-(require 'cc-org-roam)
-
-(require 'cc-hydra) ; TODO:
-(require 'cc-dev)
-
-(provide 'cc-core)
-
-;;; cc-core.el ends here
+;;; cc-latex.el ends here
