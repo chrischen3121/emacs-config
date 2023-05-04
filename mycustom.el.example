@@ -7,12 +7,15 @@
  '(cc/default-font-size 130)
  '(cc/default-variable-font-size 135)
  '(cc/frame-transparency '(100 . 100))
- '(cc/zotero-bibtex-bib-file "~/Dropbox/Zotero/bibs/MyLibrary.bib")
  '(clang-format-executable "/usr/bin/clang-format-12")
  '(clang-format-style-option "llvm")
  '(company-clang-executable "/usr/bin/clang-12")
  '(flycheck-c/c++-clang-executable "/usr/bin/clang-12")
+ '(cc/org-roam-reference-directory "~/second-brain/pages/references")
+ '(cc/zotero-bibtex-bib-file "~/Dropbox/Zotero/bibs/MyLibrary.bib")
+ '(cc/zotero-zotfile-pdf-directory "~/Dropbox/Zotero/Files")
  '(yas-snippet-dirs '("~/.config/emacs/snippets"))
+ '(codeium/metadata/api_key "abcdefghijklmnopqrstuvwxyz")
  )
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

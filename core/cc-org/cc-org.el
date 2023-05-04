@@ -155,7 +155,7 @@
 (use-package
   pdf-tools
   :custom
-  (pdf-view-display-size 'fit-page)
+  (pdf-view-display-size 'fit-width)
   (pdf-view-resize-factor 1.1)
   (pdf-annot-activate-created-annotations t)
   (pdf-view-use-scaling t)
@@ -169,6 +169,12 @@
         ("C-c t" . pdf-annot-add-text-annotation)
         ("C-c d" . pdf-annot-delete)
         ))
+
+;; (use-package
+;;   org-noter
+;;   :bind
+;;   (:map org-mode-map
+;;         ("C-c n n" . org-noter)))
 
 (provide 'cc-org)
 

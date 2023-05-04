@@ -88,10 +88,17 @@
   :type 'string
   :group 'cc-org-roam)
 
-(defcustom cc/org-roam-reference-directory "~/second-brain/pages/references"
-  "org roam reference directory"
+(defcustom cc/zotero-zotfile-pdf-directory "~/Zotero/storage"
+  "zotero pdf directory"
   :type 'string
   :group 'cc-org-roam)
+
+(defcustom cc/org-roam-reference-directory "~/second-brain/pages/references"
+  "org roam note directory for zotero files"
+  :type 'string
+  :group 'cc-org-roam)
+
+
 
 (provide 'cc-var-define)
 

@@ -23,6 +23,18 @@
 
 ;;; Code:
 
+;; (setq cc/org-roam-bib-ref-template
+;;       (concat "#+FILETAGS: reading research \n"
+;;               "- tags :: %^{keywords} \n"
+;;               "* %^{title}\n"
+;;               ":PROPERTIES:\n"
+;;               ":Custom_ID: %^{citekey}\n"
+;;               ":URL: %^{url}\n"
+;;               ":AUTHOR: %^{author-or-editor}\n"
+;;               ":NOTER_DOCUMENT: ~/Dropbox/Zotero/Files/%^{citekey}.pdf\n"
+;;               ":NOTER_PAGE:\n"
+;;               ":END:"))
+
 (use-package org-roam
   :init
   (which-key-add-key-based-replacements "C-c n" "org-roam")
@@ -30,6 +42,7 @@
   :custom
   (org-roam-directory cc/org-roam-directory)
   (org-roam-db-location cc/org-roam-db-location)
+  (org-roam-db-gc-threshold most-positive-fixnum) ; improve performance
   (org-roam-graph-viewer cc/org-roam-graph-viewer)
   (org-roam-dailies-directory cc/org-roam-dailies-directory)
   (org-roam-completion-everywhere t)
@@ -43,18 +56,18 @@
       :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
                          "#+TITLE: ${title}\n")
       :unnarrowed t)
-     ("r" "bibliography reference" plain "%?"
-      :target
-      (file+head "references/${citekey}.org"
-                 "#+TITLE: ${title}\n")
-      :unnarrowed t)))
+     ;; `("r" "bibliography reference" plain
+     ;;   ,cc/org-roam-bib-ref-template
+     ;;   :target (file+head "references/${citekey}.org"
+     ;;                      "#+TITLE: ${title}\n"))
+     ))
   :config
   (org-roam-db-autosync-mode)
   (require 'org-roam-protocol)
+  (require 'org-roam-dailies)
   (which-key-add-keymap-based-replacements org-mode-map "C-c n b" "Backlinks")
   :bind
   (("C-c n j" . org-roam-dailies-goto-today)
-   ("C-c n d" . org-roam-dailies-find-directory)
    ("C-c n c" . org-roam-capture)
    ("C-c n f" . org-roam-node-find)
    ("C-c n i" . org-roam-node-insert)
@@ -66,8 +79,9 @@
    ("C-c n b" . org-roam-buffer-toggle)
    ("C-c n t" . org-roam-tag-add)
    ("C-c n r" . org-roam-ref-add)
-   ("C-c n n" . org-roam-node-random)
-   ("C-c n g" . org-roam-graph)))
+   ("C-c n g" . org-roam-graph))
+  :bind-keymap
+  ("C-c n d" . org-roam-dailies-map))
 
 (use-package
   org-roam-ui
@@ -96,24 +110,39 @@
   (deft-default-extension "org")
   (deft-directory cc/org-roam-directory))
 
-(use-package
-  bibtex-completion
-  :defer t
-  :custom
-  (bibtex-completion-bibliography cc/zotero-bibtex-bib-file)
-  (bibtex-completion-notes-path cc/org-roam-reference-directory)
-  (bibtex-completion-pdf-field "file"))
+;; (use-package
+;;   bibtex-completion
+;;   :defer t
+;;   :custom
+;;   ;; zotero bib file
+;;   (bibtex-completion-bibliography cc/zotero-bibtex-bib-file)
+;;   (bibtex-completion-notes-path cc/org-roam-reference-directory)
+;;   (bibtex-completion-library-path cc/zotero-zotfile-pdf-directory))
 
-(use-package
-  ivy-bibtex
-  :commands ivy-bibtex
-  :after org-ref)
+;; (use-package
+;;   ivy-bibtex
+;;   :commands ivy-bibtex
+;;   :after (ivy org-refs bibtex-completion)
+;;   :bind
+;;   ("C-c n b" . ivy-bibtex))
 
-(use-package org-roam-bibtex
-  :after org-roam
-  :hook (org-roam-mode . org-roam-bibtex-mode)
-  :config
-  (require 'org-ref))
+;; (use-package org-roam-bibtex
+;;   :after org-roam
+;;   :custom
+;;   (orb-insert-interface 'ivy-bibtex)
+;;   (orb-insert-link-description 'citekey)
+;;   (orb-preformat-keywords
+;;    '("citekey" "title" "url" "author-or-editor" "keywords" "file"))
+;;   (orb-process-file-keyword t)
+;;   (orb-attached-file-extensions '("pdf"))
+;;   :hook (org-roam-mode . org-roam-bibtex-mode)
+;;   :config
+;;   (require 'org-ref)
+;;   :bind
+;;   (:map org-mode-map
+;;         ("C-c n k" . orb-insert-link)
+;;         ("C-c n e" . orb-note-action))
+;;   )
 
 (provide 'cc-org-roam)
 
