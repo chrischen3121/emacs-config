@@ -33,9 +33,33 @@
   (TeX-parse-self t)
   (TeX-PDF-mode t)
   (TeX-DVI-via-PDFTeX t)
+  (TeX-source-correlate-mode t)
+  (TeX-source-correlate-start-method 'synctex)
+  (TeX-view-program-selection '((output-pdf "PDF Tools")))
   :hook
   (LaTeX-mode . turn-on-cdlatex)
-  (LaTeX-mode . turn-on-reftex))
+  (LaTeX-mode . turn-on-reftex)
+  (LaTeX-mode . outline-minor-mode)
+  (LaTeX-mode . outline-hide-body)
+  ;; refresh pdf after compilation
+  (TeX-after-compilation-finished-functions . TeX-revert-document-buffer))
+
+(use-package
+  pdf-tools
+  :custom
+  (pdf-view-display-size 'fit-width)
+  (pdf-view-resize-factor 1.1)
+  (pdf-annot-activate-created-annotations t)
+  (pdf-view-use-scaling t)
+  (pdf-view-use-imagemagick nil)
+  :mode ("\\.pdf\\'" . pdf-view-mode)
+  :config
+  (pdf-loader-install)
+  :bind
+  (:map pdf-annot-minor-mode-map
+        ("C-c h" . pdf-annot-add-highlight-markup-annotation)
+        ("C-c t" . pdf-annot-add-text-annotation)
+        ("C-c d" . pdf-annot-delete)))
 
 (provide 'cc-latex)
 

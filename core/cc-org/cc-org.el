@@ -152,26 +152,10 @@
 ;; org-tree-slide
 ;; org-babel-tangle
 
-(use-package
-  pdf-tools
-  :custom
-  (pdf-view-display-size 'fit-width)
-  (pdf-view-resize-factor 1.1)
-  (pdf-annot-activate-created-annotations t)
-  (pdf-view-use-scaling t)
-  (pdf-view-use-imagemagick nil)
-  :mode ("\\.pdf\\'" . pdf-view-mode)
-  :config
-  (pdf-loader-install)
-  :bind
-  (:map pdf-annot-minor-mode-map
-        ("C-c h" . pdf-annot-add-highlight-markup-annotation)
-        ("C-c t" . pdf-annot-add-text-annotation)
-        ("C-c d" . pdf-annot-delete)
-        ))
 
 ;; (use-package
 ;;   org-noter
+;;   :after pdf-tools
 ;;   :bind
 ;;   (:map org-mode-map
 ;;         ("C-c n n" . org-noter)))
