@@ -26,9 +26,10 @@
 ;; Initialize package sources
 (require 'package)
 
-(setq package-archives '(("elpa"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-			 ("melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-			 ("org" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
+(setq package-archives '(("stable-melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/stable-melpa/")
+                         ;; ("melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+                         ("gnu" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+                         ("org" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
 
 (package-initialize)
 (unless package-archive-contents
@@ -64,9 +65,9 @@
 ;; quelpa
 (unless (package-installed-p 'quelpa)
   (with-temp-buffer
-	(url-insert-file-contents "https://raw.githubusercontent.com/quelpa/quelpa/master/quelpa.el")
-	(eval-buffer)
-	(quelpa-self-upgrade)))
+    (url-insert-file-contents "https://raw.githubusercontent.com/quelpa/quelpa/master/quelpa.el")
+    (eval-buffer)
+    (quelpa-self-upgrade)))
 
 ;; disable quelpa-checkout-melpa on startup
 (setq quelpa-update-melpa-p nil)
