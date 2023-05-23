@@ -148,7 +148,7 @@
    '(aw-leading-char-face ((t (:foreground "sky blue" :weight bold :height 3.0)))))
   :bind
   (([remap other-window] . ace-window)
-   ("C-x w" . ace-swap-window)))
+   ("C-x w" . ace-delete-window)))
 
 (use-package
   hl-todo

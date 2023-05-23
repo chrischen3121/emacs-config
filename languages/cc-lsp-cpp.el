@@ -37,6 +37,18 @@
               lsp-idle-delay 0.2
               tab-width 2))
 
+;; open an eshell in a new window and run compiled program
+(defun cc/lsp-run-compiled-program ()
+  (interactive)
+  (let ((file (file-name-sans-extension (file-name-nondirectory buffer-file-name))))
+    (split-window-right)
+    (other-window 1)
+    (eshell)
+    (eshell-return-to-prompt)
+    (insert (concat "./" file))
+    (eshell-send-input)
+    (other-window -1)))
+
 (use-package cc-mode
   :after company
   :commands c++-mode
@@ -47,7 +59,9 @@
   :bind
   (:map c++-mode-map
         ("C-c m c" . cc/lsp-cpp-compile)
-        ("C-c m m" . woman)))
+        ("C-c m m" . woman)
+        ("C-c m r" . cc/lsp-run-compiled-program)
+        ("C-c m g" . gud-debug)))
 
 (use-package cmake-mode
   :hook
