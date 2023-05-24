@@ -140,6 +140,13 @@
   (doom-modeline-height 15)
   (doom-modeline-env-version nil))
 
+;; kill and delete other window
+(defun cc/kill-and-del-other-window ()
+  (interactive)
+  (other-window 1)
+  (kill-buffer-and-window))
+(global-set-key (kbd "C-x w") 'cc/kill-and-del-other-window)
+
 ;; Easy shortcut to switch windows
 (use-package
   ace-window
@@ -147,8 +154,7 @@
   (custom-set-faces
    '(aw-leading-char-face ((t (:foreground "sky blue" :weight bold :height 3.0)))))
   :bind
-  (([remap other-window] . ace-window)
-   ("C-x w" . ace-delete-window)))
+  ([remap other-window] . ace-window))
 
 (use-package
   hl-todo

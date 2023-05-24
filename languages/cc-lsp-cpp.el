@@ -35,7 +35,7 @@
   (setq-local company-idle-delay 0.2
               company-minimum-prefix-length 1
               lsp-idle-delay 0.2
-              tab-width 2))
+              tab-width 4))
 
 ;; open an eshell in a new window and run compiled program
 (defun cc/lsp-run-compiled-program ()
