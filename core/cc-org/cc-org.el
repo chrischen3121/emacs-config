@@ -83,6 +83,7 @@
    ("C-c m s" . org-insert-structure-template) ; or C-c C-, by default
    ("C-c m p" . org-set-property)
    ("C-c m P" . org-set-property-and-value)
+   ("C-c m l" . org-latex-preview)
    ("C-c C-f" . nil) ; conflict with recentf-open-files
    )
   :config

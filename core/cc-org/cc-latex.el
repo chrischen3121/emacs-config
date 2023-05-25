@@ -44,6 +44,14 @@
   ;; refresh pdf after compilation
   (TeX-after-compilation-finished-functions . TeX-revert-document-buffer))
 
+;;; pdf-tools Hints
+;; o: show table of content
+;; q: close table of content
+;; l: last position
+;; r: next position
+;; +: zoom in
+;; -: zoom out
+;; W: fit page width
 (use-package
   pdf-tools
   :custom
@@ -57,9 +65,14 @@
   (pdf-loader-install)
   :bind
   (:map pdf-annot-minor-mode-map
-        ("C-c h" . pdf-annot-add-highlight-markup-annotation)
-        ("C-c t" . pdf-annot-add-text-annotation)
-        ("C-c d" . pdf-annot-delete)))
+   ("C-c h" . pdf-annot-add-highlight-markup-annotation)
+   ("C-c t" . pdf-annot-add-text-annotation)
+   ("C-c d" . pdf-annot-delete)
+   :map pdf-view-mode-map
+   ("d" . 'pdf-view-next-page-command)
+   ("a" . 'pdf-view-previous-page-command)
+   ("s" . 'pdf-view-scroll-up-or-next-page)
+   ("w" . 'pdf-view-scroll-down-or-previous-page)))
 
 (provide 'cc-latex)
 
