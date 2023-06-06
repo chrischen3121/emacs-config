@@ -134,6 +134,7 @@
    ("C-c m w" . whitespace-mode)))
 
 ;; doom-modeline
+;; Hints nerd-icons-install-fonts
 (use-package doom-modeline
   :init (doom-modeline-mode 1)
   :custom

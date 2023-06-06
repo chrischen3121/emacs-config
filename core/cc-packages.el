@@ -26,10 +26,12 @@
 ;; Initialize package sources
 (require 'package)
 
-(setq package-archives '(("stable-melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/stable-melpa/")
-                         ;; ("melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+(setq package-archives '(
+                         ("stable-melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/stable-melpa/")
+                         ("melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
                          ("gnu" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-                         ("org" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
+                         ("org" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+                         ))
 
 (package-initialize)
 (unless package-archive-contents
@@ -58,6 +60,9 @@
   (auto-package-update-interval 14)
   (auto-package-update-prompt-before-update t)
   (auto-package-update-hide-results nil)
+  (auto-package-update-delete-old-versions nil)
+  (auto-package-update-show-preview t)
+  (auto-package-update-excluded-packages '(use-package))
   :config
   (auto-package-update-maybe)
   (auto-package-update-at-time "09:00"))

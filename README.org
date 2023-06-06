@@ -2,6 +2,10 @@
 - =~/.config/emacs/=
 - =~/.emacs.d/=
 
+* Install Fonts
+- ~nerd-icons-install-fonts~ for =doom-modeline-mode=
+- ~all-the-icons-install-fonts~
+
 * TODOs
 - [ ] org-mode
 - [ ] C++
