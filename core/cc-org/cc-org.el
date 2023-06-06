@@ -75,6 +75,14 @@
   (org-mode . cc/org-mode-hook-function)
   :custom
   (org-ellipsis " ▾")
+  ;; latex preview config
+  (org-highlight-latex-and-related '(native latex entities))
+  (org-pretty-entities t) ; prettify symbols
+  (org-pretty-entities-include-sub-superscripts nil) ; show sub/superscripts, easy for editing
+  (org-format-latex-options
+   '(:foreground default :background default :scale 1.8 :html-foreground "Black"
+                 :html-background "Transparent" :html-scale 1.0 :matchers
+                 ("begin" "$1" "$" "$$" "\\(" "\\[")))
   ;; (org-hide-emphasis-markers t)
   :bind
   (:map org-mode-map
@@ -113,7 +121,6 @@
           ("elisp" . "src emacs-lisp")))
     (add-to-list 'org-structure-template-alist lang)))
 
-
 (require 'org-indent)
 ;; Ensure that anything that should be fixed-pitch in Org files appears that way
 (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
@@ -126,6 +133,8 @@
 ;; (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch)
 
 ;; Hint: M-x describe-face org- TAB
+
+;; TODO: org-download
 
 ;; visual-fill-mode
 (use-package visual-fill-column

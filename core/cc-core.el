@@ -38,8 +38,8 @@
 ;; (require 'cc-exwm)
 
 (add-to-list 'load-path (expand-file-name "cc-org" core-dir))
-(require 'cc-latex)
 (require 'cc-org)
+(require 'cc-latex)
 (require 'cc-agenda)
 (require 'cc-org-publish)
 (require 'cc-org-roam)

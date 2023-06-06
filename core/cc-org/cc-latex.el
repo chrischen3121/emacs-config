@@ -74,6 +74,13 @@
    ("s" . 'pdf-view-scroll-up-or-next-page)
    ("w" . 'pdf-view-scroll-down-or-previous-page)))
 
+;; (use-package
+;;   org-noter
+;;   :after pdf-tools
+;;   :bind
+;;   (:map org-mode-map
+;;         ("C-c n n" . org-noter)))
+
 (provide 'cc-latex)
 
 ;;; cc-latex.el ends here
