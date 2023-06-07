@@ -187,7 +187,8 @@
   (with-eval-after-load 'company
     ;; disable inline previews
     (delq 'company-preview-if-just-one-frontend company-frontends))
-  :hook (prog-mode . copilot-mode)
+  :hook ((prog-mode . copilot-mode)
+         (git-commit-setup . copilot-mode))
   :bind
   (:map copilot-completion-map
         ("<tab>" . copilot-accept-completion)
