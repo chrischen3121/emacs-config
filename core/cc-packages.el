@@ -30,7 +30,7 @@
                          ("stable-melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/stable-melpa/")
                          ("melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
                          ("gnu" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-                         ("org" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+                         ;; ("org" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
                          ))
 
 (package-initialize)

@@ -39,7 +39,7 @@
 
 (add-to-list 'load-path (expand-file-name "cc-org" core-dir))
 (require 'cc-org)
-(require 'cc-latex)
+(require 'cc-pdf-note)
 (require 'cc-agenda)
 (require 'cc-org-publish)
 (require 'cc-org-roam)

@@ -157,18 +157,22 @@
    ("C-c m a i" . anki-editor-insert-note)
    ("C-c m a c" . anki-editor-cloze-dwim)))
 
+(use-package
+  org-download
+  :after org
+  :commands org-download-clipboard
+  :custom
+  (org-download-heading-lvl 1)
+  :config
+  (set-default 'org-download-image-dir "./images")
+  :bind
+  (:map org-mode-map
+   ("C-M-y" . org-download-clipboard)))
+
 ;; TODO:
 ;; org-transclusion
 ;; org-tree-slide
 ;; org-babel-tangle
-
-
-;; (use-package
-;;   org-noter
-;;   :after pdf-tools
-;;   :bind
-;;   (:map org-mode-map
-;;         ("C-c n n" . org-noter)))
 
 (provide 'cc-org)
 

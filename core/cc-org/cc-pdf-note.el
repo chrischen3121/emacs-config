@@ -1,4 +1,4 @@
-;;; cc-latex.el --- Summary
+;;; cc-pdf-note.el --- Summary
 
 ;; Author: chrischen
 ;; Maintainer: chrischen
@@ -25,7 +25,9 @@
 
 (use-package cdlatex
   :defer t
-  :quelpa (cdlatex :fetcher github :repo "cdominik/cdlatex"))
+  :quelpa (cdlatex :fetcher github :repo "cdominik/cdlatex")
+  :hook
+  (org-mode . org-cdlatex-mode))
 
 (use-package tex
   :ensure auctex
@@ -74,13 +76,26 @@
    ("s" . 'pdf-view-scroll-up-or-next-page)
    ("w" . 'pdf-view-scroll-down-or-previous-page)))
 
-;; (use-package
-;;   org-noter
-;;   :after pdf-tools
-;;   :bind
-;;   (:map org-mode-map
-;;         ("C-c n n" . org-noter)))
+;; Hints:
+;; In org-mode
+;; M-n: next page
+;; M-p: previous page
+(use-package
+  org-noter
+  :after pdf-tools
+  :custom
+  (org-noter-auto-save-last-location t)
+  (org-noter-highlight-selected-text t)
+  (org-noter-max-short-selected-text-length 25)
+  :bind
+  (:map org-mode-map
+        ("C-c n n" . org-noter)
+        :map pdf-view-mode-map
+        ("C-c n n" . org-noter)
+        :map org-noter-doc-mode-map
+        ("e" . org-noter-insert-note) ; easy for left-hand
+        ("M-e" . org-noter-insert-precise-note)))
 
-(provide 'cc-latex)
+(provide 'cc-pdf-note)
 
-;;; cc-latex.el ends here
+;;; cc-pdf-note.el ends here
