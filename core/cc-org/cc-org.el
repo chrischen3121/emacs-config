@@ -89,9 +89,10 @@
    ("M-S-<return>" . org-table-copy-down)
    ("S-<return>" . org-insert-todo-heading)
    ("C-c m s" . org-insert-structure-template) ; or C-c C-, by default
-   ("C-c m p" . org-set-property)
-   ("C-c m P" . org-set-property-and-value)
-   ("C-c m l" . org-latex-preview)
+   ("C-c m P" . org-set-property)
+   ("C-c m p" . org-set-property-and-value)
+   ("C-c m l" . org-latex-preview) ; default C-c C-x C-l
+   ("C-c m v" . org-toggle-inline-images) ; default C-c C-x C-v
    ("C-c C-f" . nil) ; conflict with recentf-open-files
    )
   :config

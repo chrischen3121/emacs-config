@@ -63,8 +63,12 @@
   (pdf-view-use-scaling t)
   (pdf-view-use-imagemagick nil)
   :mode ("\\.pdf\\'" . pdf-view-mode)
+  :hook
+  (pdf-view-mode . pdf-view-themed-minor-mode)
   :config
   (pdf-loader-install)
+  (which-key-add-key-based-replacements "C-c C-a" "pdf-annot")
+  (which-key-add-key-based-replacements "C-c C-r" "pdf-view-minor-modes")
   :bind
   (:map pdf-annot-minor-mode-map
    ("C-c h" . pdf-annot-add-highlight-markup-annotation)
@@ -75,7 +79,8 @@
    ("d" . 'pdf-view-next-page-command)
    ("a" . 'pdf-view-previous-page-command)
    ("s" . 'pdf-view-scroll-up-or-next-page)
-   ("w" . 'pdf-view-scroll-down-or-previous-page)))
+   ("w" . 'pdf-view-scroll-down-or-previous-page)
+   ("C-c m t" . pdf-view-themed-minor-mode)))
 
 ;; Hints:
 ;; In org-mode

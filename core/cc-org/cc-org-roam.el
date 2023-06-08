@@ -96,7 +96,11 @@
   (deft-directory cc/org-roam-directory))
 
 (use-package
+  org-ref)
+
+(use-package
   bibtex-completion
+  :after org-ref
   :defer t
   :custom
   ;; zotero bib file
