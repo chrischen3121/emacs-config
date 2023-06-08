@@ -93,11 +93,10 @@
   :type 'string
   :group 'cc-org-roam)
 
-(defcustom cc/org-roam-reference-directory "~/second-brain/pages/references"
+(defcustom cc/org-roam-reference-directory "~/second-brain/pages/refs"
   "org roam note directory for zotero files"
   :type 'string
   :group 'cc-org-roam)
-
 
 
 (provide 'cc-var-define)

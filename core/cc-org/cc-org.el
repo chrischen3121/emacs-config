@@ -23,8 +23,8 @@
 
 ;;; Hints:
 ;;
-;; C-c C-l -- Insert a link
 ;; C-c C-o -- Open link at point
+;; C-c C-l -- Insert a link
 ;; C-x n s, C-x n w -- Narrow buffer
 ;; C-c / -- Search in an outline tree and fold others as much as possible
 ;; M-S-RET -- Add TODO outlines or add items with a checkbox

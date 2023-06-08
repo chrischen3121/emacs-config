@@ -23,18 +23,6 @@
 
 ;;; Code:
 
-;; (setq cc/org-roam-bib-ref-template
-;;       (concat "#+FILETAGS: reading research \n"
-;;               "- tags :: %^{keywords} \n"
-;;               "* %^{title}\n"
-;;               ":PROPERTIES:\n"
-;;               ":Custom_ID: %^{citekey}\n"
-;;               ":URL: %^{url}\n"
-;;               ":AUTHOR: %^{author-or-editor}\n"
-;;               ":NOTER_DOCUMENT: ~/Dropbox/Zotero/Files/%^{citekey}.pdf\n"
-;;               ":NOTER_PAGE:\n"
-;;               ":END:"))
-
 (use-package org-roam
   :init
   (which-key-add-key-based-replacements "C-c n" "org-roam")
@@ -56,10 +44,6 @@
       :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
                          "#+TITLE: ${title}\n")
       :unnarrowed t)
-     ;; `("r" "bibliography reference" plain
-     ;;   ,cc/org-roam-bib-ref-template
-     ;;   :target (file+head "references/${citekey}.org"
-     ;;                      "#+TITLE: ${title}\n"))
      ))
   :config
   (org-roam-db-autosync-mode)
@@ -81,6 +65,7 @@
    ("C-c n r" . org-roam-ref-add)
    ("C-c n g" . org-roam-graph))
   :bind-keymap
+  ;; daily notes keymap
   ("C-c n d" . org-roam-dailies-map))
 
 (use-package
@@ -110,39 +95,57 @@
   (deft-default-extension "org")
   (deft-directory cc/org-roam-directory))
 
-;; (use-package
-;;   bibtex-completion
-;;   :defer t
-;;   :custom
-;;   ;; zotero bib file
-;;   (bibtex-completion-bibliography cc/zotero-bibtex-bib-file)
-;;   (bibtex-completion-notes-path cc/org-roam-reference-directory)
-;;   (bibtex-completion-library-path cc/zotero-zotfile-pdf-directory))
+(use-package
+  bibtex-completion
+  :defer t
+  :custom
+  ;; zotero bib file
+  (bibtex-completion-bibliography cc/zotero-bibtex-bib-file)
+  (bibtex-completion-notes-path cc/org-roam-reference-directory)
+  (bibtex-completion-library-path cc/zotero-zotfile-pdf-directory))
 
-;; (use-package
-;;   ivy-bibtex
-;;   :commands ivy-bibtex
-;;   :after (ivy org-refs bibtex-completion)
-;;   :bind
-;;   ("C-c n b" . ivy-bibtex))
+(use-package
+  ivy-bibtex
+  :commands ivy-bibtex
+  :after (ivy org-refs bibtex-completion)
+  :bind
+  ("C-c n b" . ivy-bibtex))
 
-;; (use-package org-roam-bibtex
-;;   :after org-roam
-;;   :custom
-;;   (orb-insert-interface 'ivy-bibtex)
-;;   (orb-insert-link-description 'citekey)
-;;   (orb-preformat-keywords
-;;    '("citekey" "title" "url" "author-or-editor" "keywords" "file"))
-;;   (orb-process-file-keyword t)
-;;   (orb-attached-file-extensions '("pdf"))
-;;   :hook (org-roam-mode . org-roam-bibtex-mode)
-;;   :config
-;;   (require 'org-ref)
-;;   :bind
-;;   (:map org-mode-map
-;;         ("C-c n k" . orb-insert-link)
-;;         ("C-c n e" . orb-note-action))
-;;   )
+(setq cc/org-roam-bib-ref-template
+      (concat "#+FILETAGS: Book \n"
+              "- tags :: %^{keywords} \n"
+              "* %^{title}\n"
+              ":PROPERTIES:\n"
+              ":Custom_ID: %^{citekey}\n"
+              ":URL: %^{url}\n"
+              ":AUTHOR: %^{author-or-editor}\n"
+              ":NOTER_DOCUMENT: "
+              cc/zotero-zotfile-pdf-directory
+              "/%^{citekey}.pdf\n"
+              ":NOTER_PAGE:\n"
+              ":END:"))
+
+(use-package org-roam-bibtex
+  :after org-roam
+  :custom
+  (orb-insert-interface 'ivy-bibtex)
+  (orb-insert-link-description 'citekey)
+  (orb-preformat-keywords
+   '("citekey" "title" "url" "author-or-editor" "keywords" "file"))
+  (orb-process-file-keyword t)
+  (orb-attached-file-extensions '("pdf"))
+  :hook (org-roam-mode . org-roam-bibtex-mode)
+  :bind
+  (:map org-mode-map
+        ("C-c n k" . orb-insert-link)
+        ("C-c n e" . orb-note-actions))
+  :config
+  (add-to-list 'org-roam-capture-templates
+               `("r" "bibliography reference" plain
+                 ,cc/org-roam-bib-ref-template
+                 :target (file+head "refs/${citekey}.org"
+                                    "#+TITLE: ${title}\n")))
+  )
 
 (provide 'cc-org-roam)
 

@@ -11,7 +11,7 @@
  '(clang-format-style-option "llvm")
  '(company-clang-executable "/usr/bin/clang-12")
  '(flycheck-c/c++-clang-executable "/usr/bin/clang-12")
- '(cc/org-roam-reference-directory "~/second-brain/pages/references")
+ '(cc/org-roam-reference-directory "~/second-brain/pages/refs")
  '(cc/zotero-bibtex-bib-file "~/Dropbox/Zotero/bibs/MyLibrary.bib")
  '(cc/zotero-zotfile-pdf-directory "~/Dropbox/Zotero/Files")
  '(yas-snippet-dirs '("~/.config/emacs/snippets"))

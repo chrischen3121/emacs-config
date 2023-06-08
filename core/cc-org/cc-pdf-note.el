@@ -82,8 +82,11 @@
 ;; M-p: previous page
 (use-package
   org-noter
-  :after pdf-tools
+  :init
+  ;; fix 'pdf-annot-minor-mode-map not found' error
+  (require 'pdf-annot)
   :custom
+  (org-noter-notes-search-path `(,cc/org-roam-reference-directory))
   (org-noter-auto-save-last-location t)
   (org-noter-highlight-selected-text t)
   (org-noter-max-short-selected-text-length 25)
