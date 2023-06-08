@@ -6,10 +6,26 @@
 - ~nerd-icons-install-fonts~ for =doom-modeline-mode=
 - ~all-the-icons-install-fonts~
 
+* Zotero
+** Better BibTeX Settings
+- Edit -> Preference -> Better BibTeX
+- Citation Key Format: ~shorttitle(3,3)+year+authorsAlpha~
+  - [[https://retorque.re/zotero-better-bibtex/citing/]]
+- Keep keys unique: ~across all libraries~
+- Automatic Export: ~On Change~
+
+** ZotFile Settings
+- Tools -> ZotFile Preferences
+- General Settings -> Custom Location
+- Renaming Format -> Format for all Item Types except Patents: ~%b~
+- Automatically Rename: Advanced Settings -> ~Always rename~
+- Remove special characters from filename: ~true~
+*** Tablet Settings
+- Location of Files on Tablet
+
+
 * TODOs
-- [ ] org-mode
 - [ ] C++
-- [ ] Python
 - [ ] Try hydra examples
   - or use-package repeat-map
 
@@ -17,3 +33,4 @@
 - [X] better default
 - [X] themes, fonts
 - [X] basic dev configuration
+- [X] Python
