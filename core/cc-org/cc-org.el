@@ -162,7 +162,7 @@
   :after org
   :commands org-download-clipboard
   :custom
-  (org-download-heading-lvl 1)
+  (org-download-heading-lvl 0)
   :config
   (set-default 'org-download-image-dir "./images")
   :bind
