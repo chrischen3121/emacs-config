@@ -96,7 +96,8 @@
   (deft-directory cc/org-roam-directory))
 
 (use-package
-  org-ref)
+  org-ref
+  :defer t)
 
 (use-package
   bibtex-completion
