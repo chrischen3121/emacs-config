@@ -74,7 +74,7 @@
    ("C-c h" . pdf-annot-add-highlight-markup-annotation)
    ("C-c t" . pdf-annot-add-text-annotation)
    ("C-c d" . pdf-annot-delete)
-   ("C-c l" . pdf-annot-list-annotations)
+   ("C-c l" . pdf-annot-list-annotations) ; Hint: <SPC> go to selected annotation
    :map pdf-view-mode-map
    ("d" . 'pdf-view-next-page-command)
    ("a" . 'pdf-view-previous-page-command)
