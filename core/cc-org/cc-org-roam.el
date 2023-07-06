@@ -23,6 +23,14 @@
 
 ;;; Code:
 
+;; Bind this to C-c n I
+(defun cc/org-roam-node-insert-immediate (arg &rest args)
+  (interactive "P")
+  (let ((args (cons arg args))
+        (org-roam-capture-templates (list (append (car org-roam-capture-templates)
+                                                  '(:immediate-finish t)))))
+    (apply #'org-roam-node-insert args)))
+
 (use-package org-roam
   :init
   (which-key-add-key-based-replacements "C-c n" "org-roam")
@@ -36,11 +44,9 @@
   (org-roam-completion-everywhere t)
   (org-roam-capture-templates
    '(("d" "default" plain "%?"
-      :immediate-finish t
       :if-new (file+head "${slug}.org" "#+TITLE: ${title}\n")
       :unnarrowed t)
      ("t" "temp" plain "%?"
-      :immediate-finish t
       :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
                          "#+TITLE: ${title}\n")
       :unnarrowed t)
@@ -55,6 +61,7 @@
    ("C-c n c" . org-roam-capture)
    ("C-c n f" . org-roam-node-find)
    ("C-c n i" . org-roam-node-insert)
+   ("C-c n I" . cc/org-roam-node-insert-immediate)
    ("C-c n p" . org-id-get-create)
    ("C-c n u" . org-roam-ui-mode)
    ("C-c n l" . org-roam-ui-sync-theme)
@@ -97,12 +104,12 @@
 
 (use-package
   org-ref
-  :defer t)
+  :defer t
+  )
 
 (use-package
   bibtex-completion
-  :after org-ref
-  :defer t
+  :commands bibtex-completion-init
   :custom
   ;; zotero bib file
   (bibtex-completion-bibliography cc/zotero-bibtex-bib-file)
@@ -111,10 +118,8 @@
 
 (use-package
   ivy-bibtex
-  :commands ivy-bibtex
-  :after (ivy org-refs bibtex-completion)
   :bind
-  ("C-c n b" . ivy-bibtex))
+  ("C-c n F" . ivy-bibtex))
 
 (setq cc/org-roam-bib-ref-template
       (concat "#+FILETAGS: Book \n"
