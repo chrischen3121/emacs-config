@@ -44,11 +44,12 @@
   (org-roam-completion-everywhere t)
   (org-roam-capture-templates
    '(("d" "default" plain "%?"
-      :if-new (file+head "${slug}.org" "#+TITLE: ${title}\n")
+      :if-new (file+head "%<%Y%m%d>-${slug}.org"
+                         "#+title: ${title}\n#+date: %U\n")
       :unnarrowed t)
-     ("t" "temp" plain "%?"
-      :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
-                         "#+TITLE: ${title}\n")
+     ("t" "tagged" plain "%?"
+      :if-new (file+head "%<%Y%m%d>-${slug}.org"
+                         "#+title: ${title}\n#+filetags: %^{filetags}\n#+date: %U\n")
       :unnarrowed t)
      ))
   :config
@@ -65,15 +66,13 @@
    ("C-c n p" . org-id-get-create)
    ("C-c n u" . org-roam-ui-mode)
    ("C-c n l" . org-roam-ui-sync-theme)
+   ("C-c n d" . org-roam-dailies-find-directory)
    :map org-mode-map
    ("C-c n a" . org-roam-alias-add)
    ("C-c n b" . org-roam-buffer-toggle)
    ("C-c n t" . org-roam-tag-add)
    ("C-c n r" . org-roam-ref-add)
-   ("C-c n g" . org-roam-graph))
-  :bind-keymap
-  ;; daily notes keymap
-  ("C-c n d" . org-roam-dailies-map))
+   ("C-c n g" . org-roam-graph)))
 
 (use-package
   org-roam-ui
