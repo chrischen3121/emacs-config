@@ -26,14 +26,11 @@
       (expand-file-name cc/org-todo-filename cc/agenda-home-dir)
       cc/org-quicknotes-file
       (expand-file-name cc/org-quicknotes-filename cc/agenda-home-dir)
-      cc/org-journal-file
-      (expand-file-name cc/org-journal-filename cc/agenda-home-dir)
       cc/org-habits-file
       (expand-file-name cc/org-habits-filename cc/agenda-home-dir))
 
 (add-to-list 'recentf-exclude cc/org-todo-file)
 (add-to-list 'recentf-exclude cc/org-quicknotes-file)
-(add-to-list 'recentf-exclude cc/org-journal-file)
 (add-to-list 'recentf-exclude cc/org-habits-file)
 
 
@@ -46,33 +43,27 @@
   ;; org-capture
   (org-default-notes-file (expand-file-name cc/org-quicknotes-filename cc/agenda-home-dir))
   (org-capture-templates
-   '(("q" "Quick Notes" entry
-      (file+datetree cc/org-quicknotes-file)
-      "* %?\nEntered on %U\n  %a\n"
-      :empty-lines 1
-      :kill-buffer t)
-     ("p" "Project" entry
+   '(("p" "Project" entry
       (file+headline cc/org-todo-file "Projects")
-      "* TODO %?%^g\n  %U\n" :empty-lines 1)
+      "* TODO %^{Project Name}\n%U\n\n** Tasks\n\n%?"
+      :empty-lines 1)
+     ("h" "Habit" entry
+      (file+headline cc/org-habits-file "Habits")
+      "* TODO [#C] %^{Habit}\nSCHEDULED:%T\n" :empty-lines 1)
      ("b" "Book" entry
       (file+headline cc/org-todo-file "Books")
-      "* TODO %?%^g\n  %U\n" :empty-lines 1)
+      "* TODO %^{Book Name}%^g\n%U\n" :empty-lines 1)
      ("c" "Course" entry
       (file+headline cc/org-todo-file "Courses")
-      "* TODO %?%^g\n  %U\n" :empty-lines 1)
+      "* TODO %^{Course Name}%^g\n%U\n" :empty-lines 1)
      ("w" "Work" entry
       (file+headline cc/org-todo-file "Work")
-      "* TODO %?%^g\n  %U\n" :empty-lines 1)
+      "* TODO %?%^g\n%U\n" :empty-lines 1)
      ("m" "Meeting" entry
       (file+olp cc/org-todo-file "Work" "Meetings")
-      "* TODO %^t %? \n"
+      "* TODO %?\n%U\n"
       :clock-in :clock-resume
       :empty-lines 1)
-     ("j" "Journal" entry
-      (file+olp+datetree cc/org-journal-file)
-     "\n* %<%I:%M %p> - Journal\n%?\n"
-     :empty-lines 1
-     :kill-buffer t)
      ))
   (org-refile-targets '((nil :level . 1)
             (org-agenda-files :level . 1)))

@@ -78,6 +78,11 @@
   :type 'string
   :group 'cc-org-roam)
 
+(defcustom cc/org-roam-reference-directory "~/second-brain/pages/refs"
+  "org roam note directory for zotero files"
+  :type 'string
+  :group 'cc-org-roam)
+
 (defcustom cc/org-roam-graph-viewer "google-chrome-stable"
   "executable to view org roam graph"
   :type 'string
@@ -90,11 +95,6 @@
 
 (defcustom cc/zotero-zotfile-pdf-directory "~/Zotero/storage"
   "zotero pdf directory"
-  :type 'string
-  :group 'cc-org-roam)
-
-(defcustom cc/org-roam-reference-directory "~/second-brain/pages/refs"
-  "org roam note directory for zotero files"
   :type 'string
   :group 'cc-org-roam)
 
