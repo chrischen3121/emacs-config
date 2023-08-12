@@ -41,15 +41,15 @@
   (org-roam-db-gc-threshold most-positive-fixnum) ; improve performance
   (org-roam-graph-viewer cc/org-roam-graph-viewer)
   (org-roam-dailies-directory cc/org-roam-dailies-directory)
-  (org-roam-completion-everywhere t)
+  ;; (org-roam-completion-everywhere t)
   (org-roam-capture-templates
    '(("d" "default" plain "%?"
       :if-new (file+head "%<%Y%m%d>-${slug}.org"
-                         "#+title: ${title}\n#+date: %U\n")
+                         "#+title: ${title}\n")
       :unnarrowed t)
      ("t" "tagged" plain "%?"
       :if-new (file+head "%<%Y%m%d>-${slug}.org"
-                         "#+title: ${title}\n#+filetags: %^{filetags}\n#+date: %U\n")
+                         "#+title: ${title}\n#+filetags: %^{filetags}\n")
       :unnarrowed t)
      ))
   :config
@@ -121,8 +121,8 @@
   ("C-c n F" . ivy-bibtex))
 
 (setq cc/org-roam-bib-ref-template
-      (concat "#+FILETAGS: Book \n"
-              "- tags :: %^{keywords} \n"
+      (concat "#+filetags: Book \n"
+              "- links :: %^{keywords} \n"
               "* %^{title}\n"
               ":PROPERTIES:\n"
               ":Custom_ID: %^{citekey}\n"
@@ -134,27 +134,27 @@
               ":NOTER_PAGE:\n"
               ":END:"))
 
-(use-package org-roam-bibtex
-  :after org-roam
-  :custom
-  (orb-insert-interface 'ivy-bibtex)
-  (orb-insert-link-description 'citekey)
-  (orb-preformat-keywords
-   '("citekey" "title" "url" "author-or-editor" "keywords" "file"))
-  (orb-process-file-keyword t)
-  (orb-attached-file-extensions '("pdf"))
-  :hook (org-roam-mode . org-roam-bibtex-mode)
-  :bind
-  (:map org-mode-map
-        ("C-c n k" . orb-insert-link)
-        ("C-c n e" . orb-note-actions))
-  :config
-  (add-to-list 'org-roam-capture-templates
-               `("r" "bibliography reference" plain
-                 ,cc/org-roam-bib-ref-template
-                 :target (file+head "refs/${citekey}.org"
-                                    "#+TITLE: ${title}\n")))
-  )
+;; (use-package org-roam-bibtex
+;;   :after org-roam
+;;   :custom
+;;   (orb-insert-interface 'ivy-bibtex)
+;;   (orb-insert-link-description 'citekey)
+;;   (orb-preformat-keywords
+;;    '("citekey" "title" "url" "author-or-editor" "keywords" "file"))
+;;   (orb-process-file-keyword t)
+;;   (orb-attached-file-extensions '("pdf"))
+;;   :hook (org-roam-mode . org-roam-bibtex-mode)
+;;   :bind
+;;   (:map org-mode-map
+;;         ("C-c n k" . orb-insert-link)
+;;         ("C-c n e" . orb-note-actions))
+;;   :config
+;;   (add-to-list 'org-roam-capture-templates
+;;                `("r" "bibliography reference" plain
+;;                  ,cc/org-roam-bib-ref-template
+;;                  :target (file+head "refs/${citekey}.org"
+;;                                     "#+TITLE: ${title}\n")))
+;;   )
 
 (provide 'cc-org-roam)
 
