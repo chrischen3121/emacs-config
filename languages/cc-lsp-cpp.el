@@ -41,7 +41,9 @@
 (defun cc/lsp-run-compiled-program ()
   (interactive)
   (let ((file (file-name-sans-extension (file-name-nondirectory buffer-file-name))))
-    (split-window-right)
+    ;; split if there is only one window
+    (when (= (length (window-list)) 1)
+      (split-window-horizontally))
     (other-window 1)
     (eshell)
     (eshell-return-to-prompt)
