@@ -61,7 +61,7 @@
   (auto-package-update-prompt-before-update t)
   (auto-package-update-hide-results nil)
   (auto-package-update-delete-old-versions nil)
-  (auto-package-update-show-preview t)
+  (auto-package-update-show-preview nil)
   (auto-package-update-excluded-packages '(use-package))
   :config
   (auto-package-update-maybe)
