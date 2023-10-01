@@ -91,7 +91,8 @@
 
 (defun cc/set-prog-backends ()
   (setq-local company-backends
-              '((company-capf :separate) company-ispell)))
+              '((company-capf :separate) company-ispell))
+  (setq-local company-minimum-prefix-length 0))
 
 (use-package
   company
