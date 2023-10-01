@@ -73,17 +73,25 @@
 ;; Auto Completion - company-mode or corfu
 
 ;; company-mode
+;; Examples
+;; (defun cc/set-text-backends ()
+;;   (setq-local company-backends
+;;               '((company-ispell :separate) company-files))
+;;   (setq-local company-minimum-prefix-length 2))
+
+;; (defun cc/set-prog-backends ()
+;;   (setq-local company-backends
+;;               '((company-capf :with company-yasnippet)
+;;                 company-ispell)))
+
 (defun cc/set-text-backends ()
   (setq-local company-backends
               '((company-ispell :separate) company-files))
   (setq-local company-minimum-prefix-length 2))
 
-
 (defun cc/set-prog-backends ()
   (setq-local company-backends
-              '((company-yasnippet company-capf company-keywords :separate)
-                company-ispell))
-  (setq-local company-minimum-prefix-length 1))
+              '((company-capf :separate) company-ispell)))
 
 (use-package
   company
