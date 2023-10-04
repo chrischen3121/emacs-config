@@ -86,13 +86,15 @@
 
 (defun cc/set-text-backends ()
   (setq-local company-backends
-              '((company-ispell :separate) company-files))
+              '(company-capf company-dabbrev company-ispell))
   (setq-local company-minimum-prefix-length 2))
 
 (defun cc/set-prog-backends ()
   (setq-local company-backends
-              '((company-capf :separate) company-ispell))
-  (setq-local company-minimum-prefix-length 0))
+              '((company-capf :with company-yasnippet) company-dabbrev-code company-files))
+  (setq-local company-minimum-prefix-length 1
+              company-dabbrev-minimum-length 2
+              company-files-exclusions ".git/"))
 
 (use-package
   company
@@ -102,7 +104,10 @@
   :custom
   (company-transformers '(company-sort-by-backend-importance))
   :hook ((text-mode . cc/set-text-backends)
-         (prog-mode . cc/set-prog-backends)))
+         (prog-mode . cc/set-prog-backends))
+  :bind
+  (:map company-mode-map
+        ("M-/" . company-complete)))
 
 (use-package company-box
   :hook (company-mode . company-box-mode))
@@ -114,6 +119,8 @@
   :hook ((prog-mode . yas-minor-mode-on)
          (org-mode . yas-minor-mode-on))
   :config
+
+
   (yas-reload-all)
   (which-key-add-keymap-based-replacements yas-minor-mode-map "C-c y" "yasnippet")
   :bind
@@ -121,8 +128,7 @@
         ("C-c &" . nil)
         ("C-c y n" . yas-new-snippet)
         ("C-c y r" . yas-reload-all)
-        ("C-c y v" . yas-visit-snippet-file)
-        ("M-/" . company-yasnippet)))
+        ("C-c y v" . yas-visit-snippet-file)))
 
 ;; hideshow
 (use-package
