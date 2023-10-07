@@ -30,7 +30,7 @@
 ;; M-S-RET -- Add TODO outlines or add items with a checkbox
 ;; C-c - -- Cycle bullets (-, +, *, ...)
 ;; C-c m i -- Create IDs
-;; C-c m p -- org-toggle-inline-images
+;; C-c m v -- org-toggle-inline-images
 ;; C-c ; -- Toggle the "COMMENT" keyword
 ;; ====== Tags ==========
 ;; C-c C-q -- Set a tag
@@ -83,6 +83,7 @@
    '(:foreground default :background default :scale 1.8 :html-foreground "Black"
                  :html-background "Transparent" :html-scale 1.0 :matchers
                  ("begin" "$1" "$" "$$" "\\(" "\\[")))
+  (org-startup-with-inline-images t)
   ;; (org-hide-emphasis-markers t)
   :bind
   (:map org-mode-map
