@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: leetcode
+# key: lt
+# --
+#include <vector>
+using namespace std;
+$0
