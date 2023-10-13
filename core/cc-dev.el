@@ -107,7 +107,7 @@
          (prog-mode . cc/set-prog-backends))
   :bind
   (:map company-mode-map
-        ("M-/" . company-complete)))
+        ("M-/" . company-yasnippet)))
 
 (use-package company-box
   :hook (company-mode . company-box-mode))
