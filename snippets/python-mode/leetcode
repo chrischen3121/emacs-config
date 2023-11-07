@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: leetcode
+# key: lt
+# --
+from typing import List
+$0

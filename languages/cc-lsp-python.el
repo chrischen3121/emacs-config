@@ -44,6 +44,9 @@
   ;; default jedi
   (lsp-pylsp-plugins-jedi-completion-fuzzy nil) ; if enabled, it can hit performance
 
+  ;; virtual environment
+  (lsp-pylsp-plugins-jedi-use-pyenv-environment t) ; use pyenv virtualenv
+
   ;; completion
   (lsp-pylsp-plugins-jedi-completion-enabled t)
   (lsp-pylsp-plugins-rope-completion-enabled nil)
