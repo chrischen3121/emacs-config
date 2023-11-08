@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: imagesize
+# key: imgsize
+# --
+#+ATTR_HTML: :width ${1:800}px

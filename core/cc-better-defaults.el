@@ -34,6 +34,11 @@
 (delete-selection-mode 1)
 (set-fringe-mode 10) ; Give some breathing room
 (setq-default indent-tabs-mode nil)
+;; (setq-default cursor-type 'bar)
+
+;; better mouse scrolling
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil)))
+(setq mouse-wheel-progressive-speed nil)
 
 ;; which-key
 (use-package
@@ -186,7 +191,8 @@
      (prog-mode . smartparens-mode))
   :bind (:map emacs-lisp-mode-map
      ("C-M-f" . sp-forward-sexp)
-     ("C-M-b" . sp-backward-sexp)))
+     ("C-M-b" . sp-backward-sexp)
+     ("C-c C-f" . nil)))
 
 ;; command-log-mode: show keybinding history
 (use-package command-log-mode

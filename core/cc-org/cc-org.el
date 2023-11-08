@@ -70,6 +70,7 @@
   (cc/org-set-backends))
 
 (use-package org
+  :pin melpa
   :commands org-mode
   :hook
   (org-mode . cc/org-mode-hook-function)

@@ -74,12 +74,14 @@
     (eval-buffer)
     (quelpa-self-upgrade)))
 
+(unless (package-installed-p 'quelpa-use-package)
+  (quelpa
+   '(quelpa-use-package
+     :fetcher git
+     :url "https://github.com/quelpa/quelpa-use-package.git")))
+
 ;; disable quelpa-checkout-melpa on startup
 (setq quelpa-update-melpa-p nil)
-(quelpa
- '(quelpa-use-package
-   :fetcher git
-   :url "https://github.com/quelpa/quelpa-use-package.git"))
 
 (require 'quelpa-use-package)
 
