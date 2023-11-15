@@ -26,21 +26,21 @@
 (prefer-coding-system 'utf-8)
 
 (set-face-attribute 'default nil
-		    :font "Hack" :height cc/default-font-size)
+            :font "Hack" :height cc/default-font-size)
 
 (set-face-attribute 'fixed-pitch nil
-		    :font "WenQuanYi Micro Hei Mono" :height cc/default-font-size)
+            :font "Hack" :height cc/default-font-size)
 
 (set-face-attribute 'variable-pitch nil
-		    :font "Hack"
-		    :height cc/default-variable-font-size
-		    :weight 'regular)
+            :font "Hack"
+            :height cc/default-variable-font-size
+            :weight 'regular)
 
 (set-fontset-font t 'emoji
-		  (font-spec :family "Noto Color Emoji" :height cc/default-font-size))
+          (font-spec :family "Noto Color Emoji" :height cc/default-font-size))
 
 (set-fontset-font t 'han
-		  (font-spec :family "WenQuanyi Micro Hei Mono" :height cc/default-font-size))
+          (font-spec :family "WenQuanyi Micro Hei Mono" :height cc/default-font-size))
 
 (provide 'cc-locale)
 

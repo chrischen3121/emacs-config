@@ -36,6 +36,15 @@
   (:map sh-mode-map
         ("C-c C-f" . nil)))
 
+(use-package clojure-mode
+  :mode "\\.edn\\'"
+  :hook (clojure-mode . lsp-deferred)
+  :custom
+  (clojure-indent-style 'align-arguments)
+  (clojure-align-forms-automatically t))
+
+
+
 ;; Plantuml
 (use-package
   plantuml-mode
