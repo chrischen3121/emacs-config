@@ -53,11 +53,6 @@
   :type 'string
   :group 'cc-agenda-config)
 
-(defcustom cc/org-journal-filename "journal.org"
-  "Agenda journal filename"
-  :type 'string
-  :group 'cc-agenda-config)
-
 (defcustom cc/org-habits-filename "habits.org"
   "Agenda habits filename"
   :type 'string
