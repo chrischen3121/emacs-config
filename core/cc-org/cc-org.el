@@ -57,8 +57,7 @@
 
 (defun cc/org-set-backends ()
   (setq-local company-backends
-              '((company-capf company-yasnippet company-ispell
-                              :separate)))
+              '(company-capf (:separate company-dabbrev company-yasnippet company-ispell)))
   (setq-local company-minimum-prefix-length 2))
 
 (defun cc/org-mode-hook-function ()
@@ -136,8 +135,6 @@
 ;; (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch)
 
 ;; Hint: M-x describe-face org- TAB
-
-;; TODO: org-download
 
 ;; visual-fill-mode
 (use-package visual-fill-column
