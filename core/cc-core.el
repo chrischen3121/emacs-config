@@ -35,7 +35,6 @@
 (require 'cc-themes)
 (require 'cc-better-defaults)
 (require 'cc-ivy-counsel)
-;; (require 'cc-exwm)
 
 (add-to-list 'load-path (expand-file-name "cc-org" core-dir))
 (require 'cc-org)

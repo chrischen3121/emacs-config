@@ -28,7 +28,9 @@
   :ensure nil
   :bind
   (:map emacs-lisp-mode-map
-	("C-c ! r" . check-parens)))
+        ("C-c ! r" . check-parens)
+        ("C-c C-f" . nil)
+        ))
 
 ;; TODO: edebug
 ;; (use-package edebug)

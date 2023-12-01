@@ -191,8 +191,7 @@
      (prog-mode . smartparens-mode))
   :bind (:map emacs-lisp-mode-map
      ("C-M-f" . sp-forward-sexp)
-     ("C-M-b" . sp-backward-sexp)
-     ("C-c C-f" . nil)))
+     ("C-M-b" . sp-backward-sexp)))
 
 ;; command-log-mode: show keybinding history
 (use-package command-log-mode
