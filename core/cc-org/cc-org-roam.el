@@ -44,11 +44,11 @@
   ;; (org-roam-completion-everywhere t)
   (org-roam-capture-templates
    '(("d" "default" plain "%?"
-      :if-new (file+head "%<%Y%m%d>-${slug}.org"
+      :if-new (file+head "${slug}-%<%Y%m%d>.org"
                          "#+title: ${title}\n")
       :unnarrowed t)
      ("t" "tagged" plain "%?"
-      :if-new (file+head "%<%Y%m%d>-${slug}.org"
+      :if-new (file+head "${slug}-%<%Y%m%d>.org"
                          "#+title: ${title}\n#+filetags: %^{filetags}\n")
       :unnarrowed t)
      ))
